@@ -1,0 +1,2211 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>SUSHI BOOM — Суші та роли, Царичанка</title>
+<meta name="description" content="Суші та роли в Царичанці. Філадельфія, Каліфорнія, макі, темпура, суші-бургери, сети. Замовлення онлайн, 10:00–18:00 без вихідних.">
+<meta property="og:title" content="SUSHI BOOM — Суші та роли, Царичанка">
+<meta property="og:description" content="Смакота, яка завжди піднімає настрій. Замовляй онлайн.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Kraft-палітра: золото на глибокому чорному */
+  --bg:#09090b; --bg2:#0d0d10; --card:#0e0e11;
+  --line:rgba(255,255,255,.08); --line2:rgba(201,161,94,.4);
+  --cream:#ece9e1; --muted:#8f8b81; --dim:#5f5c55;
+  --gold:#c9a15e; --gold2:#e3c383;
+  --green:#c9a15e; --orange:#e3c383; --accent:#c9a15e;
+  --logo-g:#ece9e1; --logo-o:#e3c383;
+  --r:0;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+::selection{background:var(--gold);color:#0b0b0d}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--cream);
+  font-family:'Manrope',system-ui,sans-serif;
+  overflow-x:hidden;line-height:1.55;
+}
+body::before{content:'';position:fixed;inset:0;z-index:-1;background:
+  radial-gradient(900px 520px at 72% -8%, rgba(201,161,94,.10), transparent 62%),
+  radial-gradient(760px 760px at -18% 34%, rgba(128,42,42,.07), transparent 60%),
+  linear-gradient(180deg,#0d0d10 0%, #09090b 55%, #070708 100%)}
+body.lock{overflow:hidden}
+h1,h2,h3,.u{font-family:'Cormorant Garamond',serif;font-weight:500;letter-spacing:.02em}
+
+/* ---------- ambient glow ---------- */
+.glow{display:none}
+.glow i{position:absolute;border-radius:0;filter:blur(90px);opacity:.30}
+.g1{width:52vw;height:52vw;background:#2A3450;top:-16vw;right:-14vw;opacity:.14}
+.g2{width:44vw;height:44vw;background:#1C2438;top:52vh;left:-18vw;opacity:.12}
+
+/* ---------- preloader ---------- */
+#pre{position:fixed;inset:0;z-index:9999;background:var(--bg);
+  display:grid;place-items:center;transition:opacity .7s ease,visibility .7s}
+#pre.out{opacity:0;visibility:hidden}
+.pre-logo{text-align:center}
+.pre-logo .t{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(26px,7vw,46px);letter-spacing:.26em;text-transform:uppercase}
+.pre-logo .t span:first-child{color:var(--logo-g)}
+.pre-logo .t span:last-child{color:var(--logo-o)}
+.bar{width:150px;height:2px;background:rgba(255,255,255,.12);margin:18px auto 0;overflow:hidden;border-radius:0}
+.bar b{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--green),var(--orange));animation:load 1.5s ease forwards}
+@keyframes load{to{width:100%}}
+
+/* ---------- nav ---------- */
+#nav{position:absolute;top:0;left:0;right:0;z-index:80;
+  padding:14px 18px;display:flex;align-items:center;justify-content:space-between;
+  transition:background .35s,backdrop-filter .35s,border-color .35s;
+  border-bottom:1px solid transparent}
+
+.brand{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(14px,4.2vw,19px);letter-spacing:.26em;text-transform:uppercase}
+.brand span:first-child{color:var(--logo-g)}
+.brand span:last-child{color:var(--logo-o)}
+.cart-btn{position:relative;background:none;color:var(--gold2);border:1px solid var(--line2);
+  font-size:10.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  padding:11px 16px;cursor:pointer;transition:.2s}
+.cart-btn:active{transform:scale(.96)}
+.cart-btn b{position:absolute;top:-7px;right:-7px;min-width:19px;height:19px;
+  background:var(--gold);color:#0b0b0d;font-size:10.5px;font-weight:700;
+  display:grid;place-items:center;padding:0 5px;transform:scale(0);transition:transform .28s cubic-bezier(.3,1.6,.5,1)}
+.cart-btn b.on{transform:scale(1)}
+
+/* ---------- hero ---------- */
+header{position:relative;z-index:1;min-height:100svh;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:110px 20px 60px;text-align:center;overflow:hidden}
+.kicker{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);margin-bottom:22px}
+.hero-t{font-family:'Manrope';font-weight:800;
+  font-size:clamp(46px,16vw,120px);line-height:.9;letter-spacing:-.045em}
+.hero-t .l1{color:var(--green);display:block}
+.hero-t .l2{color:var(--orange);display:block}
+.hero-t span{display:inline-block;opacity:0;transform:translateY(60px) rotate(6deg);
+  animation:rise .9s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+.sub{margin:26px auto 0;max-width:400px;color:var(--muted);font-size:15px;
+  opacity:0;animation:fade .8s ease 1s forwards}
+.hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:34px;
+  opacity:0;animation:fade .8s ease 1.2s forwards}
+@keyframes fade{to{opacity:1}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;height:50px;padding:0 26px;
+  font-size:11px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+  border:1px solid var(--line);color:var(--cream);background:none;cursor:pointer;text-decoration:none;transition:.2s}
+.btn:active{transform:scale(.97)}
+.btn.gold,.btn-p{background:var(--gold);border-color:var(--gold);color:#0b0b0d;box-shadow:none}
+.btn.ghost,.btn-s{background:none;color:var(--gold2);border-color:var(--line2)}
+.scroll-hint{margin-top:46px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);
+  opacity:0;animation:fade 1s ease 1.6s forwards}
+.scroll-hint::after{content:'';display:block;width:1px;height:34px;margin:12px auto 0;
+  background:linear-gradient(var(--muted),transparent);animation:pulse 1.8s ease infinite}
+@keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
+
+/* ---------- sections ---------- */
+section{position:relative;z-index:1;padding:70px 18px}
+.sec-h{text-align:center;margin-bottom:38px}
+.sec-h .tag{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--orange);display:block;margin-bottom:12px}
+.sec-h h2{font-size:clamp(28px,7vw,44px);font-weight:800}
+
+/* ---------- search ---------- */
+.search-wrap{max-width:520px;margin:0 auto 4px}
+.search{position:relative;display:flex;align-items:center}
+.search input{width:100%;background:var(--card);border:1px solid var(--line);
+  border-radius:0;padding:15px 46px 15px 46px;color:var(--cream);
+  font-family:inherit;font-size:15px;outline:none;transition:border-color .25s,box-shadow .25s;
+  -webkit-appearance:none;appearance:none}
+.search input::-webkit-search-cancel-button{display:none}
+.search input::placeholder{color:var(--muted)}
+.search input:focus{border-color:var(--orange);box-shadow:0 0 0 4px rgba(255,255,255,.10)}
+.s-ico{position:absolute;left:17px;width:17px;height:17px;stroke:var(--muted);
+  fill:none;stroke-width:2.2;pointer-events:none;transition:stroke .25s}
+.search input:focus ~ .s-ico,.search.has .s-ico{stroke:var(--orange)}
+.s-clr{position:absolute;right:8px;width:32px;height:32px;border-radius:0;border:0;
+  background:rgba(255,255,255,.07);color:var(--muted);font-size:13px;cursor:pointer;
+  display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}
+.search.has .s-clr{opacity:1;pointer-events:auto}
+.s-clr:active{transform:scale(.85)}
+mark{background:rgba(255,255,255,.16);color:var(--cream);border-radius:0;padding:0 2px}
+
+/* ---------- no results ---------- */
+.no-res{display:none;text-align:center;padding:56px 20px}
+.no-res.on{display:block;animation:fade .4s ease}
+.no-res .nr-ico{font-size:38px;margin-bottom:14px;opacity:.6}
+.no-res h3{font-size:19px;font-weight:600;margin-bottom:8px}
+.no-res p{color:var(--muted);font-size:14px;margin-bottom:22px}
+
+/* ---------- category rail ---------- */
+.rail{display:flex;overflow-x:auto;margin-bottom:8px;
+  scrollbar-width:none;-webkit-overflow-scrolling:touch;position:sticky;top:0;z-index:60;
+  background:rgba(9,9,11,.84);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-block:1px solid var(--line)}
+.rail::-webkit-scrollbar{display:none}
+.chip{flex:none;padding:15px 14px 13px;border:0;background:none;
+  color:var(--muted);font-size:10.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  border-bottom:2px solid transparent;cursor:pointer;transition:.2s;white-space:nowrap}
+.chip.on{color:var(--gold2);border-bottom-color:var(--gold);background:none}
+
+/* ---------- menu list (rows) ---------- */
+.grid{display:block}
+.mcat{max-width:760px;margin:0 auto;padding:26px 0 4px;scroll-margin-top:52px}
+.mcat-h{display:flex;align-items:baseline;gap:14px;margin-bottom:2px}
+.mcat-h h2{font-weight:500;font-size:28px;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.mcat-h::after{content:'';flex:1;height:1px;background:var(--line)}
+.mcat-h i{font-style:normal;color:var(--dim);font-size:10.5px;letter-spacing:.24em}
+.mcat-g{display:flex;flex-direction:column}
+/* ── позиція меню: рядок, фото/монограма справа ── */
+.item{display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line);
+  opacity:0;transform:translateY(14px);transition:opacity .5s,transform .5s}
+.item.in{opacity:1;transform:none}
+.info{flex:1;min-width:0;display:flex;flex-direction:column}
+.info h3{font-size:21px;font-weight:600;line-height:1.15;color:#f4f1e9}
+.hit{font-style:normal;font-size:9.5px;font-weight:700;color:var(--gold);
+  letter-spacing:.26em;text-transform:uppercase;margin-left:9px;vertical-align:3px}
+.desc{margin-top:7px;font-size:12.5px;font-weight:300;line-height:1.6;color:var(--muted)}
+.meta{margin-top:auto;padding-top:12px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.price{color:var(--gold2);font-size:16px;font-weight:600}
+.w{font-size:10.5px;color:var(--dim);letter-spacing:.12em;text-transform:uppercase}
+.ctl{margin-left:auto}
+.add{height:38px;padding:0 18px;border:1px solid var(--line2);background:none;color:var(--gold2);
+  font-size:10.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;transition:.18s;cursor:pointer}
+.add:hover{background:var(--gold);border-color:var(--gold);color:#0b0b0d}
+.add:active{transform:scale(.96)}
+.add.done{background:var(--gold);border-color:var(--gold);color:#0b0b0d}
+.add .ai{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.4}
+.thumb{flex:none;width:96px;height:96px;border:1px solid var(--line);
+  background:linear-gradient(155deg,#191920,#0d0d10);display:grid;place-items:center;overflow:hidden}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb span{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:500;color:rgba(201,161,94,.22)}
+@media(min-width:560px){.thumb{width:118px;height:118px}}
+
+/* ---------- lightbox ---------- */
+#lb{position:fixed;inset:0;z-index:200;display:none;place-items:center;padding:22px}
+#lb.on{display:grid}
+#lb .bd{position:absolute;inset:0;background:rgba(6,7,10,.55);
+  backdrop-filter:blur(14px) saturate(.9);-webkit-backdrop-filter:blur(14px) saturate(.9);
+  opacity:0;transition:opacity .35s}
+#lb.on .bd{opacity:1}
+#lb .fig{position:relative;z-index:2;max-width:520px;width:100%;text-align:center;
+  transform:scale(.9);opacity:0;transition:transform .4s cubic-bezier(.16,1,.3,1),opacity .35s}
+#lb.on .fig{transform:none;opacity:1}
+#lb img{width:100%;border-radius:0;border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 30px 80px rgba(0,0,0,.6)}
+#lb .cap{margin-top:16px}
+#lb .cap h3{font-size:19px;font-weight:600}
+#lb .cap p{color:var(--muted);font-size:13px;margin-top:6px}
+#lb .cap .price{margin-top:10px;display:inline-block;font-size:20px}
+#lb .x{position:absolute;top:-52px;right:0;width:40px;height:40px;border-radius:0;
+  background:rgba(255,255,255,.1);border:1px solid var(--line);color:#fff;font-size:20px;cursor:pointer}
+#lb .lb-add{margin-top:16px}
+
+/* ---------- info / map ---------- */
+.info{max-width:900px;margin:0 auto;display:grid;gap:12px;grid-template-columns:1fr}
+@media(min-width:760px){.info{grid-template-columns:1fr 1fr}}
+.ic{background:var(--card);border:1px solid var(--line);border-radius:0;padding:24px}
+.ic h3{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:14px}
+.ic .big{font-family:'Manrope';font-weight:600;font-size:21px;letter-spacing:-.02em}
+.ic .sm{color:var(--muted);font-size:13px;margin-top:8px}
+.map-c{grid-column:1/-1;padding:0;overflow:hidden;position:relative;min-height:200px;
+  display:grid;place-items:center;text-align:center;
+  background:radial-gradient(circle at 50% 40%,rgba(255,255,255,.16),transparent 62%),var(--card)}
+.pin{width:56px;height:56px;border-radius:0;background:var(--orange);display:grid;place-items:center;
+  margin-bottom:16px;position:relative}
+.pin::after{content:'';position:absolute;inset:-10px;border-radius:0;border:1px solid var(--orange);
+  opacity:.5;animation:ring 2s ease-out infinite}
+@keyframes ring{to{transform:scale(1.7);opacity:0}}
+.pin svg{width:24px;height:24px;fill:#0A0A0A}
+.map-c .inner{padding:38px 22px}
+
+/* ---------- cart ---------- */
+#cart{position:fixed;inset:0;z-index:300;display:none}
+#cart.on{display:block}
+#cart .bd{position:absolute;inset:0;background:rgba(6,7,10,.6);backdrop-filter:blur(10px);
+  opacity:0;transition:opacity .35s}
+#cart.on .bd{opacity:1}
+.sheet{position:absolute;bottom:0;left:0;right:0;max-width:100%;max-height:92svh;background:var(--bg2);
+  border-radius:0;border-top:1px solid var(--line);
+  display:flex;flex-direction:column;transform:translateY(100%);transition:transform .45s cubic-bezier(.16,1,.3,1)}
+#cart.on .sheet{transform:none}
+.sh-h{padding:20px 20px 14px;display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid var(--line)}
+.sh-h h2{font-size:19px;font-weight:600}
+.sh-h button{background:none;border:0;color:var(--muted);font-size:26px;cursor:pointer;line-height:1}
+.sh-b{overflow-y:auto;overflow-x:hidden;padding:16px 20px;flex:1;min-width:0;
+  -webkit-overflow-scrolling:touch}
+.line{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.line img{width:56px;height:56px;border-radius:0;object-fit:cover;flex:0 0 56px}
+.line .n{flex:1;min-width:0}
+.line .n b{display:block;font-size:13.5px;font-weight:600}
+.line .n span{font-size:12px;color:var(--orange)}
+.qty{display:flex;align-items:center;border:1px solid var(--gold);height:36px}
+.qty button{width:29px;height:29px;border-radius:0;border:1px solid var(--line);
+  background:var(--card);color:var(--cream);font-size:15px;cursor:pointer;line-height:1}
+.qty b{min-width:16px;text-align:center;font-size:14px}
+.empty{text-align:center;padding:50px 20px;color:var(--muted);font-size:14px}
+
+/* крок / назад */
+.sh-h h2{display:flex;align-items:center;gap:10px}
+.stp{font-family:'Manrope';font-style:normal;font-size:11px;font-weight:700;
+  color:var(--muted);background:var(--card);border:1px solid var(--line);
+  padding:3px 8px;border-radius:0;letter-spacing:.04em}
+.bk{width:32px;height:32px;flex:0 0 32px;border-radius:0;border:1px solid var(--line);
+  background:var(--card);color:var(--cream);font-size:16px;cursor:pointer;
+  display:grid;place-items:center;line-height:1;padding:0;transition:transform .18s}
+.bk:active{transform:scale(.88)}
+
+/* ---------- номер замовлення ---------- */
+.ono{margin:18px auto 20px;padding:16px;max-width:300px;border-radius:0;
+  background:linear-gradient(135deg,rgba(255,255,255,.12),rgba(255,255,255,.06));
+  border:1px dashed rgba(255,255,255,.42)}
+.ono span{display:block;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:7px}
+.ono b{display:block;font-family:'Manrope';font-weight:800;
+  font-size:clamp(19px,5.4vw,25px);letter-spacing:.01em;color:var(--cream)}
+.ono-c{margin-top:11px;padding:7px 15px;border-radius:0;cursor:pointer;
+  background:rgba(255,255,255,.07);border:1px solid var(--line);
+  color:var(--muted);font-family:inherit;font-size:11.5px;font-weight:700;
+  transition:transform .18s,color .25s}
+.ono-c:active{transform:scale(.92);color:var(--orange)}
+.ono-c.sm{margin:0;padding:5px 11px;font-size:10.5px}
+
+/* ---------- історія замовлень ---------- */
+.ord{padding:15px;border-radius:0;margin-bottom:11px;
+  background:var(--card);border:1px solid var(--line)}
+.ord-h{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.ord-h b{font-family:'Manrope';font-weight:600;font-size:14px;color:var(--orange)}
+.ord-m{display:flex;gap:12px;margin:9px 0 11px}
+.ord-m span{font-size:11.5px;color:var(--muted)}
+.ord-i{font-family:'Manrope',sans-serif;font-size:12px;color:var(--muted);
+  line-height:1.6;white-space:pre-wrap;word-break:break-word;margin:0}
+.ord-t{margin-top:11px;padding-top:11px;border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted)}
+.ord-t b{font-family:'Manrope';font-weight:600;font-size:14px;color:var(--cream)}
+.ord-r{width:100%;margin-top:13px;padding:12px;border-radius:0;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:9px;
+  background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.32);
+  color:var(--green);font-family:inherit;font-size:13px;font-weight:700;
+  transition:transform .18s,background .25s}
+.ord-r svg{width:15px;height:15px;flex:0 0 15px}
+.ord-r:active{transform:scale(.97);background:rgba(255,255,255,.18)}
+.ord-note{font-size:11px;color:#4A4E58;line-height:1.55;text-align:center;
+  padding:14px 12px 4px}
+
+/* підсумок на кроці 2 */
+.rcap{padding:14px 16px;margin-bottom:16px;border-radius:0;min-width:0;overflow:hidden;
+  background:var(--card);border:1px solid var(--line)}
+.rc-l{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:5px 0;min-width:0}
+.rc-l span{font-size:13px;color:var(--muted);min-width:0;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rc-l b{font-size:14px;color:var(--cream);font-weight:700;text-align:right;
+  white-space:nowrap;flex:0 0 auto}
+.rc-l b.q{color:var(--muted)}
+.rc-t{margin-top:7px;padding-top:11px;border-top:1px solid var(--line)}
+.rc-t span{color:var(--cream);font-weight:700}
+.rc-t b{font-family:'Manrope';font-weight:600;font-size:18px;color:var(--orange);
+  white-space:normal;text-align:right;line-height:1.2}
+.rc-t .plus{display:block;font-family:'Manrope';font-style:normal;
+  font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.02em;margin-top:2px}
+
+/* телефон: одне поле, префікс у масці */
+.tel-in{font-variant-numeric:tabular-nums;letter-spacing:.03em}
+
+/* селект населеного пункту */
+.fld select{width:100%;background:var(--card);border:1px solid var(--line);
+  border-radius:0;padding:13px 40px 13px 15px;color:var(--cream);
+  font-family:inherit;font-size:15px;outline:none;cursor:pointer;
+  -webkit-appearance:none;appearance:none;transition:border-color .25s;
+  background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),
+                   linear-gradient(135deg,var(--muted) 50%,transparent 50%);
+  background-position:calc(100% - 19px) 50%,calc(100% - 14px) 50%;
+  background-size:5px 5px,5px 5px;background-repeat:no-repeat}
+.fld select:focus{border-color:var(--orange)}
+.fld select option{background:var(--bg2);color:var(--cream)}
+
+/* плашка доставки поза Царичанкою */
+.dbox.far{background:linear-gradient(135deg,rgba(255,190,60,.13),rgba(255,190,60,.03));
+  border-color:rgba(255,190,60,.36)}
+.dbox.far .d-ic{background:#FFBE3C}
+.warn{color:#FFBE3C !important}
+
+/* апсел */
+.ups{margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
+.ups h4{font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--orange);margin-bottom:13px;font-weight:700}
+.ups-row{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;
+  scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.ups-row::-webkit-scrollbar{display:none}
+.ups-c{position:relative;flex:0 0 106px;background:var(--card);border:1px solid var(--line);
+  border-radius:0;padding:8px;cursor:pointer;text-align:left;
+  display:flex;flex-direction:column;gap:5px;transition:transform .18s,border-color .25s}
+.ups-c:active{transform:scale(.94)}
+.ups-c img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:0}
+.un{font-size:11.5px;font-weight:600;color:var(--cream);line-height:1.25;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.up{font-family:'Manrope';font-size:12px;font-weight:600;color:var(--orange)}
+.ua{position:absolute;top:14px;right:14px;width:24px;height:24px;border-radius:0;
+  background:var(--green);color:#0A0A0A;display:grid;place-items:center;
+  font-size:15px;font-weight:700;line-height:1}
+.sh-f{padding:16px 20px calc(20px + env(safe-area-inset-bottom));border-top:1px solid var(--line);
+  background:var(--bg2);min-width:0}
+.total{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px}
+.total span{color:var(--muted);font-size:13px}
+.total b{font-family:'Manrope';font-size:24px;color:var(--orange);font-weight:600}
+.fld{margin-bottom:11px}
+.fld label{display:block;font-size:11px;color:var(--muted);margin-bottom:6px;letter-spacing:.06em;text-transform:uppercase}
+.fld input,.fld textarea,.fld select{width:100%;background:var(--card);border:1px solid var(--line);
+  border-radius:0;padding:13px 15px;color:var(--cream);font-family:inherit;font-size:15px;outline:none;
+  transition:border-color .25s}
+.fld input:focus,.fld textarea:focus{border-color:var(--orange)}
+.fld textarea{resize:none;min-height:66px}
+.seg{display:flex;gap:8px;margin-bottom:13px}
+
+/* label над групою */
+.lbl{display:block;font-size:11px;color:var(--muted);margin:20px 0 10px;
+  letter-spacing:.16em;text-transform:uppercase;font-weight:700}
+
+/* адреса: 2 колонки */
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.zone{font-size:12.5px;color:var(--muted);margin:2px 0 14px}
+
+/* плашка доставки */
+.dbox{display:flex;gap:13px;align-items:flex-start;padding:15px;
+  border-radius:0;margin-bottom:6px;
+  background:linear-gradient(135deg,rgba(255,255,255,.12),rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.32)}
+.d-ic{width:40px;height:40px;flex:0 0 40px;border-radius:0;background:var(--orange);
+  display:grid;place-items:center;font-size:19px}
+.dbox b{display:block;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:5px}
+.dbox p{font-size:14px;color:var(--cream);line-height:1.45}
+.dbox small{display:block;font-size:11.5px;color:var(--muted);margin-top:5px}
+
+/* радіо-кнопки */
+.radios{display:flex;flex-direction:column;gap:2px}
+.rd{display:flex;align-items:center;gap:13px;padding:12px 2px;background:none;border:0;
+  cursor:pointer;font-family:inherit;text-align:left;width:100%}
+.rd i{width:24px;height:24px;flex:0 0 24px;border-radius:0;
+  border:2px solid rgba(255,255,255,.22);display:grid;place-items:center;
+  transition:border-color .22s}
+.rd i::after{content:'';width:11px;height:11px;border-radius:0;background:var(--orange);
+  transform:scale(0);transition:transform .22s cubic-bezier(.3,1.6,.5,1)}
+.rd span{font-size:15px;font-weight:700;color:var(--muted);transition:color .22s}
+.rd.on i{border-color:var(--orange)}
+.rd.on i::after{transform:scale(1)}
+.rd.on span{color:var(--cream)}
+.rd:active{transform:scale(.99)}
+
+/* лічильник осіб */
+.ppl{display:flex;align-items:center;gap:16px}
+.ppl button{width:44px;height:44px;border-radius:0;border:1px solid var(--line);
+  background:var(--card);color:var(--orange);font-size:21px;cursor:pointer;
+  display:grid;place-items:center;line-height:1;transition:transform .16s}
+.ppl button:active{transform:scale(.86)}
+.ppl b{font-family:'Manrope';font-size:19px;min-width:26px;text-align:center}
+.ppl-h{font-size:12.5px;color:var(--muted);margin-left:2px}
+
+.hint{font-size:12.5px;color:var(--muted);line-height:1.5;margin:10px 0 4px}
+
+/* кнопка + альтернатива */
+.submit{display:flex;align-items:center;justify-content:center;gap:10px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sic{width:19px;height:19px;fill:#0A0A0A;flex:0 0 19px}
+.alt{text-align:center;font-size:13px;color:var(--muted);margin-top:13px}
+.alt a{color:var(--orange);text-decoration:none;font-weight:700}
+.fld input[type=time]{color-scheme:dark}
+.seg button{flex:1;padding:12px;border-radius:0;border:1px solid var(--line);background:var(--card);
+  color:var(--muted);font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:all .25s}
+.seg button.on{background:var(--cream);color:#0A0A0A;border-color:var(--cream)}
+.submit{width:100%;padding:17px;border-radius:0;border:0;background:var(--orange);color:#0A0A0A;
+  font-family:'Manrope';font-weight:600;font-size:15px;cursor:pointer;transition:transform .2s}
+.submit:active{transform:scale(.97)}
+.submit:disabled{opacity:.55}
+.hidden{display:none}
+.ok{text-align:center;padding:44px 20px}
+.ok .ic2{width:66px;height:66px;border-radius:0;background:var(--green);display:grid;place-items:center;
+  margin:0 auto 18px;font-size:31px;color:#0A0A0A;animation:pop .5s cubic-bezier(.3,1.6,.5,1)}
+@keyframes pop{from{transform:scale(0)}}
+.ok h3{font-size:21px;font-weight:600;margin-bottom:9px}
+.ok p{color:var(--muted);font-size:14px}
+
+/* ---------- icons ---------- */
+svg use{pointer-events:none}
+.si{width:15px;height:15px;color:var(--orange);flex:0 0 15px;vertical-align:-2px}
+.bi{width:16px;height:16px;flex:0 0 16px;vertical-align:-3px}
+.ici{width:14px;height:14px;vertical-align:-2px;margin-right:2px}
+.ai{width:17px;height:17px}
+.ei{width:44px;height:44px;color:var(--muted);opacity:.5;margin-bottom:14px}
+.sl{display:flex;align-items:center;gap:9px;justify-content:center;margin-bottom:4px}
+.sl:last-child{margin-bottom:0}
+.si.sh{color:var(--green)}
+.nr-ico svg{width:34px;height:34px;color:var(--muted)}
+.s-clr svg{width:12px;height:12px}
+#lb .x svg,.sh-x svg,.dr-x svg{width:16px;height:16px}
+.sh-x{background:none;border:0;color:var(--muted);cursor:pointer;
+  width:34px;height:34px;display:grid;place-items:center;padding:0}
+.bk svg{width:15px;height:15px;transform:rotate(180deg)}
+.d-ic svg{width:21px;height:21px;color:#0A0A0A}
+.ic2 svg{width:30px;height:30px}
+.pin svg{width:24px;height:24px;color:#0A0A0A}
+.cb-ic{width:15px;height:15px;flex:0 0 15px}
+.cart-btn{display:flex;align-items:center;gap:7px}
+@media(max-width:400px){.cart-btn span{display:none}.cart-btn{padding:10px 13px}}
+
+/* ---------- burger ---------- */
+.burger{width:40px;height:40px;border-radius:0;border:1px solid var(--line);
+  background:var(--card);cursor:pointer;display:grid;place-content:center;gap:4px;padding:0;
+  transition:transform .2s,border-color .25s}
+.burger:active{transform:scale(.9)}
+.burger span{display:block;width:17px;height:1.8px;background:var(--cream);border-radius:0;
+  transition:transform .38s cubic-bezier(.16,1,.3,1),opacity .22s}
+body.nav-on .burger span:nth-child(1){transform:translateY(5.8px) rotate(45deg)}
+body.nav-on .burger span:nth-child(2){opacity:0;transform:scaleX(.3)}
+body.nav-on .burger span:nth-child(3){transform:translateY(-5.8px) rotate(-45deg)}
+#nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
+#nav .brand{position:absolute;left:50%;transform:translateX(-50%);pointer-events:none}
+
+/* ---------- drawer ---------- */
+#drawer{position:fixed;inset:0;z-index:250;visibility:hidden}
+#drawer.on{visibility:visible}
+.dr-bd{position:absolute;inset:0;background:rgba(6,7,10,.6);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  opacity:0;transition:opacity .4s}
+#drawer.on .dr-bd{opacity:1}
+.dr-p{position:absolute;top:0;bottom:0;left:0;width:min(86vw,340px);
+  background:var(--bg2);border-right:1px solid var(--line);
+  padding:22px 20px calc(22px + env(safe-area-inset-bottom));
+  display:flex;flex-direction:column;overflow-y:auto;
+  transform:translateX(-100%);transition:transform .5s cubic-bezier(.16,1,.3,1)}
+#drawer.on .dr-p{transform:none}
+.dr-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:34px}
+.dr-h .brand{position:static;transform:none;font-size:17px}
+.dr-x{width:34px;height:34px;border-radius:0;border:1px solid var(--line);
+  background:var(--card);color:var(--muted);cursor:pointer;display:grid;place-items:center;padding:0}
+
+.dr-nav{display:flex;flex-direction:column}
+.dr-nav a{display:flex;align-items:center;gap:14px;padding:15px 0;text-decoration:none;
+  color:var(--cream);border-bottom:1px solid var(--line);
+  opacity:0;transform:translateX(-16px)}
+#drawer.on .dr-nav a{animation:drIn .55s cubic-bezier(.16,1,.3,1) forwards}
+#drawer.on .dr-nav a:nth-child(1){animation-delay:.10s}
+#drawer.on .dr-nav a:nth-child(2){animation-delay:.16s}
+#drawer.on .dr-nav a:nth-child(3){animation-delay:.22s}
+@keyframes drIn{to{opacity:1;transform:none}}
+.dr-nav i{font-family:'Manrope';font-style:normal;font-size:11px;color:var(--orange);
+  width:20px;flex:0 0 20px}
+.dr-nav span{flex:1;font-family:'Manrope';font-weight:600;font-size:17px;letter-spacing:-.02em}
+.dr-nav svg{width:15px;height:15px;color:var(--muted);transition:transform .25s}
+.dr-nav a:active svg{transform:translateX(4px)}
+
+.dr-cats{margin-top:26px;opacity:0}
+#drawer.on .dr-cats{animation:drIn .55s ease .30s forwards}
+.dr-cats h4{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:13px;font-weight:700}
+.dr-cl{display:flex;flex-wrap:wrap;gap:7px}
+.dr-cl button{padding:8px 13px;border-radius:0;border:1px solid var(--line);
+  background:var(--card);color:var(--muted);font-size:12px;font-weight:700;
+  font-family:inherit;cursor:pointer;transition:all .22s}
+.dr-cl button:active{background:var(--cream);color:#0A0A0A}
+
+.dr-f{margin-top:auto;padding-top:30px;opacity:0}
+#drawer.on .dr-f{animation:drIn .55s ease .38s forwards}
+.dr-call{display:flex;align-items:center;gap:13px;padding:14px;border-radius:0;
+  background:var(--card);border:1px solid var(--line);text-decoration:none;color:var(--cream)}
+.dr-call svg{width:19px;height:19px;color:var(--orange);flex:0 0 19px}
+.dr-call b{display:block;font-family:'Manrope';font-size:14px;font-weight:600}
+.dr-call span{font-size:11.5px;color:var(--muted)}
+.dr-so{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:11px;
+  color:var(--muted);text-decoration:none;font-size:13px;font-weight:700}
+.dr-so svg{width:15px;height:15px}
+
+/* ---------- wow: канвас-фон ---------- */
+#fx{display:none}
+
+/* ---------- wow: кільце-курсор ---------- */
+#ring{position:fixed;top:0;left:0;z-index:500;pointer-events:none;
+  width:26px;height:26px;border-radius:50%;
+  border:1.5px solid rgba(255,255,255,.7);
+  transition:width .28s cubic-bezier(.16,1,.3,1),height .28s cubic-bezier(.16,1,.3,1),
+             background .28s,border-color .28s;
+  mix-blend-mode:difference}
+#ring.big{width:52px;height:52px;background:rgba(255,255,255,.14);border-color:var(--orange)}
+@media(hover:none){#ring{display:none}}
+
+/* ---------- wow: reveal on scroll ---------- */
+.rv{opacity:0;transform:translateY(30px);
+  transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- wow: секційний заголовок з лінією ---------- */
+.sec-h h2{position:relative;display:inline-block}
+.sec-h h2::after{content:'';position:absolute;left:50%;bottom:-12px;transform:translateX(-50%);
+  width:0;height:2px;border-radius:0;
+  background:linear-gradient(90deg,var(--green),var(--orange));
+  transition:width .9s cubic-bezier(.16,1,.3,1) .2s}
+.sec-h.in h2::after{width:64px}
+
+/* ---------- wow: лічильники ---------- */
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;
+  max-width:520px;margin:0 auto}
+.st{text-align:center;padding:24px 8px;border-radius:0;
+  background:var(--card);border:1px solid var(--line)}
+.st b{display:block;font-family:'Manrope';font-weight:800;
+  font-size:clamp(24px,6vw,36px);letter-spacing:-.03em;
+  background:linear-gradient(180deg,var(--cream),var(--orange));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.st b.hrs{font-size:clamp(17px,4.4vw,26px);letter-spacing:-.02em;white-space:nowrap}
+.st span{display:block;font-size:11px;color:var(--muted);margin-top:7px;
+  letter-spacing:.14em;text-transform:uppercase}
+
+/* ---------- wow: свічення активного чіпа ---------- */
+.chip.on{box-shadow:0 6px 22px rgba(243,239,231,.16)}
+
+/* ---------- wow: «печатка» на кнопках ---------- */
+.btn,.submit,.add{position:relative;overflow:hidden}
+.rip{position:absolute;pointer-events:none;border-radius:0;
+  border:2px solid rgba(255,255,255,.5);
+  transform:translate(-50%,-50%) scale(.2) rotate(-12deg);
+  animation:stamp .58s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes stamp{
+  55%{opacity:.9}
+  to{transform:translate(-50%,-50%) scale(1.5) rotate(0deg);opacity:0}
+}
+
+
+/* ---------- контакти: мінімал ---------- */
+.info-min{max-width:660px;margin:0 auto;border-top:1px solid var(--line)}
+.im{display:flex;justify-content:space-between;align-items:center;gap:16px;
+  padding:17px 2px;border-bottom:1px solid var(--line)}
+.im span{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.im b{font-weight:600;font-size:15px;color:var(--cream)}
+.im a{text-decoration:none;color:var(--cream)}
+
+/* ---------- footer ---------- */
+footer{position:relative;z-index:1;overflow:hidden;
+  padding:60px 20px calc(38px + env(safe-area-inset-bottom));
+  text-align:center;border-top:1px solid var(--line)}
+.f-glow{position:absolute;top:-70%;left:50%;transform:translateX(-50%);
+  width:400px;height:300px;border-radius:0;pointer-events:none;
+  background:radial-gradient(circle,rgba(255,255,255,.16),transparent 68%)}
+footer .brand{font-size:23px;margin-bottom:12px;position:static;transform:none}
+.f-tag{color:var(--muted);font-size:13px}
+footer .links{display:flex;gap:20px;justify-content:center;margin:24px 0;flex-wrap:wrap}
+footer a{color:var(--muted);text-decoration:none;font-size:13.5px;transition:color .25s}
+footer .links a:active{color:var(--orange)}
+.f-line{width:100%;max-width:280px;height:1px;margin:6px auto 22px;
+  background:linear-gradient(90deg,transparent,var(--line),transparent)}
+
+.cr{font-size:12.5px;color:var(--muted);letter-spacing:.02em}
+.cr .cc{display:inline-grid;place-items:center;width:17px;height:17px;border-radius:0;
+  border:1px solid rgba(255,255,255,.22);font-size:9.5px;vertical-align:-3px;margin-right:4px}
+.cr b{font-family:'Manrope';font-weight:600;font-size:12px;color:var(--cream);letter-spacing:0}
+.cr i{font-style:normal;margin-left:3px}
+
+.made{display:inline-block;margin-top:14px;text-decoration:none;
+  font-size:11.5px;color:#4A4E58;letter-spacing:.02em;transition:color .3s}
+.made b{font-weight:600;color:#6A6F7B;
+  border-bottom:1px solid rgba(255,255,255,.10);padding-bottom:1px;
+  transition:color .3s,border-color .3s}
+.made:hover{color:#6A6F7B}
+.made:hover b{color:var(--orange);border-color:rgba(255,255,255,.4)}
+.made:active b{color:var(--orange)}
+
+/* ---------- toast ---------- */
+/* ---------- sticky cart bar ---------- */
+#bar{position:fixed;left:0;right:0;bottom:0;z-index:180;
+  color:var(--cream);font-family:'Manrope',system-ui,sans-serif;text-align:left;
+  padding:12px 18px calc(12px + env(safe-area-inset-bottom));
+  background:rgba(9,9,11,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:14px;
+  transform:translateY(120%);opacity:0;pointer-events:none;cursor:pointer;
+  transition:transform .45s cubic-bezier(.16,1,.3,1),opacity .3s}
+#bar.on{transform:none;opacity:1;pointer-events:auto}
+#bar:active{transform:scale(.975)}
+@media(min-width:620px){#bar{left:50%;right:auto;transform:translate(-50%,160%);min-width:400px}
+  #bar.on{transform:translate(-50%,0)}
+  #bar:active{transform:translate(-50%,0) scale(.975)}}
+.b-l{display:flex;align-items:center;gap:10px;min-width:0}
+.b-ct{width:30px;height:30px;flex:0 0 30px;border-radius:0;background:var(--orange);
+  color:#0A0A0A;display:grid;place-items:center;
+  font-family:'Manrope';font-weight:600;font-size:13px}
+.b-tx{font-size:13px;color:#5A5F69;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.b-r{display:flex;align-items:center;gap:12px;flex:0 0 auto}
+.b-r b{font-family:'Manrope';font-weight:600;font-size:16px;letter-spacing:-.02em;white-space:nowrap;color:var(--gold2)}
+.b-go{font-size:12.5px;font-weight:700;color:var(--orange);white-space:nowrap}
+@media(max-width:360px){.b-go{display:none}}
+body.bar-on footer{padding-bottom:calc(104px + env(safe-area-inset-bottom))}
+/* тост над панеллю. Панель реально ~64px заввишки (вимір з пристрою),
+   низ 14px + safe. Ставимо тост на 100px + safe -> ~20px чистого зазору. */
+body.bar-on{--toast-b:calc(100px + env(safe-area-inset-bottom))}
+
+#toast{position:fixed;left:50%;bottom:var(--toast-b,26px);transform:translate(-50%,calc(100% + 140px));z-index:150;
+  background:var(--cream);color:#0A0A0A;padding:13px 22px;border-radius:0;
+  font-size:13.5px;font-weight:700;
+  transition:transform .4s cubic-bezier(.3,1.4,.5,1),bottom .3s ease;
+  box-shadow:0 14px 40px rgba(0,0,0,.4);white-space:nowrap;max-width:90vw}
+#toast.on{transform:translate(-50%,0)}
+/* ---------- hero (Kraft) ---------- */
+.hero{min-height:82svh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;padding:120px 18px 60px;position:relative;z-index:1}
+.hero .jp{color:var(--gold);letter-spacing:.9em;text-indent:.9em;font-size:12px;margin-bottom:24px}
+.hero h1{font-weight:500;font-size:clamp(46px,13vw,86px);line-height:1.02;
+  letter-spacing:.05em;text-transform:uppercase;color:var(--cream)}
+.hero h1 b{color:var(--gold2);font-weight:500}
+.hsub{margin-top:20px;color:var(--muted);font-weight:300;font-size:13px;letter-spacing:.22em;text-transform:uppercase}
+.rule{width:56px;height:1px;background:var(--gold);margin:32px auto}
+.acts{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* ---------- екран вибору точки ---------- */
+.pick{position:fixed;inset:0;z-index:600;display:flex;align-items:center;
+  justify-content:center;padding:24px;
+  background:
+    radial-gradient(900px 520px at 72% -8%, rgba(201,161,94,.10), transparent 62%),
+    linear-gradient(180deg,#0d0d10 0%, #09090b 55%, #070708 100%)}
+.pick[hidden]{display:none}
+.pick-box{width:100%;max-width:440px;text-align:center;
+  animation:pickIn .5s cubic-bezier(.16,1,.3,1)}
+@keyframes pickIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.pick-logo{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.7rem;letter-spacing:.26em;text-transform:uppercase;color:var(--cream)}
+.pick-logo b{color:var(--logo-o)}
+.pick-logo::first-line{color:var(--logo-g)}
+.pick-sub{margin:.4rem 0 1.4rem;color:#9fb0a4;font-size:1rem}
+.pick-grid{display:grid;gap:14px}
+.pick-card{display:flex;flex-direction:column;gap:6px;padding:20px 18px;
+  border-radius:0;border:1px solid rgba(255,255,255,.1);cursor:pointer;
+  background:rgba(255,255,255,.04);color:#fff;text-align:left;
+  transition:transform .18s ease,border-color .18s ease,background .18s ease}
+.pick-card:hover,.pick-card:focus-visible{transform:translateY(-2px);
+  border-color:var(--green);background:rgba(255,255,255,.08);outline:none}
+.pick-city{font-weight:700;font-size:1.25rem}
+.pick-note{font-size:.9rem;color:#9fb0a4}
+@media(prefers-reduced-motion:reduce){
+  .pick-box{animation:none}
+  .pick-card{transition:none}
+}
+footer{border-top:1px solid var(--line)}
+footer .links a{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.f-tag{color:var(--muted);letter-spacing:.18em;text-transform:uppercase;font-size:11px}
+
+/* ---------- банер столика (QR-режим Петриківки) ---------- */
+.table-banner{display:flex;align-items:center;gap:10px;margin:0 0 18px;
+  padding:12px 14px;border-radius:0;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3);
+  color:var(--cream);font-size:.95rem}
+.table-banner b{color:var(--green)}
+.table-banner svg{fill:none;stroke:var(--green);stroke-width:2;flex:none}
+</style>
+</head>
+<body>
+<script>
+/* ФОТО: тимчасово прибрані з сайту.
+   Коли будуть нормальні знімки — додай сюди ключі у форматі
+   'phil_klasik':'data:image/webp;base64,....'
+   Ключі мають збігатися з полем img у PRODUCTS_TSAR / PRODUCTS_PETR. */
+const IMG = {};
+</script>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-roll" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.7"/>
+      <circle cx="12" cy="12" r="4.6" fill="currentColor" opacity=".35"/>
+      <circle cx="12" cy="12" r="2.1" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24">
+      <path d="M12 20s-7-4.5-7-9.4A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.6C19 15.5 12 20 12 20z"
+        fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24">
+      <path d="M6.5 3h3l1.5 4-2 1.4a12 12 0 0 0 5.6 5.6L16 12l4 1.5v3a2 2 0 0 1-2.2 2A15.5 15.5 0 0 1 4 6.2 2 2 0 0 1 6.5 3z"
+        fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24">
+      <path d="M12 21s6.5-6.2 6.5-11a6.5 6.5 0 1 0-13 0C5.5 14.8 12 21 12 21z"
+        fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+      <circle cx="12" cy="10" r="2.4" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-search" viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="6.6" fill="none" stroke="currentColor" stroke-width="1.9"/>
+      <path d="M19.5 19.5 16 16" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-x" viewBox="0 0 24 24">
+      <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-check" viewBox="0 0 24 24">
+      <path d="M5 12.5l4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="2.4"
+        stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-arr" viewBox="0 0 24 24">
+      <path d="M5 12h13M13 6.5 18.5 12 13 17.5" fill="none" stroke="currentColor"
+        stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-scooter" viewBox="0 0 24 24">
+      <circle cx="5.5" cy="17.5" r="2.6" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <circle cx="18.5" cy="17.5" r="2.6" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M8 17.5h8M15 5h2.2l1.3 12.5M15 5v6.5H8.5A3.5 3.5 0 0 0 5 15v2.5"
+        fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-send" viewBox="0 0 24 24">
+      <path d="M3 20.5 21.5 12 3 3.5l2.6 7.1L14 12l-8.4 1.4z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="8.6" fill="none" stroke="currentColor" stroke-width="1.7"/>
+      <path d="M12 7v5.3l3.3 2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24">
+      <rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.7"/>
+      <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.7"/>
+      <circle cx="17" cy="7" r="1.2" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-bag" viewBox="0 0 24 24">
+      <path d="M5.5 8h13l-1 12.5h-11z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+      <path d="M8.8 10V6.8a3.2 3.2 0 0 1 6.4 0V10" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div id="pre">
+  <div class="pre-logo">
+    <div class="t"><span>SUSHI</span> <span>BOOM</span></div>
+    <div class="bar"><b></b></div>
+  </div>
+</div>
+
+<canvas id="fx"></canvas>
+
+<!-- ЕКРАН ВИБОРУ ТОЧКИ: показується, поки місто не обрано -->
+<div id="pick" class="pick" hidden>
+  <div class="pick-box">
+    <div class="pick-logo">СУШІ <b>BOOM</b></div>
+    <p class="pick-sub">Оберіть заклад</p>
+    <div class="pick-grid">
+      <button class="pick-card" data-pt="tsar">
+        <span class="pick-city">Царичанка</span>
+        <span class="pick-note">Доставка та самовивіз</span>
+      </button>
+      <button class="pick-card" data-pt="petr">
+        <span class="pick-city">Петриківка</span>
+        <span class="pick-note">Доставка, самовивіз, столики</span>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="glow"><i class="g1"></i><i class="g2"></i></div>
+
+
+<nav id="nav">
+  <button class="burger" id="burger" onclick="toggleNav()" aria-label="Меню">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="brand"><span>SUSHI</span> <span>BOOM</span></div>
+  <button class="cart-btn" onclick="openCart()">
+    <svg class="cb-ic"><use href="#i-bag"/></svg>
+    <span>Кошик</span><b id="badge">0</b>
+  </button>
+</nav>
+
+<div id="drawer">
+  <div class="dr-bd" onclick="toggleNav()"></div>
+  <aside class="dr-p">
+    <div class="dr-h">
+      <div class="brand"><span>SUSHI</span> <span>BOOM</span></div>
+      <button class="dr-x" onclick="toggleNav()"><svg><use href="#i-x"/></svg></button>
+    </div>
+
+    <nav class="dr-nav">
+      <a href="#menu"  onclick="toggleNav()"><i>01</i><span>Меню</span><svg><use href="#i-arr"/></svg></a>
+      <a href="#info"  onclick="toggleNav()"><i>02</i><span>Контакти</span><svg><use href="#i-arr"/></svg></a>
+      <a href="#" onclick="toggleNav();openCart();return false"><i>03</i><span>Кошик</span><svg><use href="#i-arr"/></svg></a>
+      <a href="#" id="drOrders" class="hidden" onclick="toggleNav();showOrders();return false"><i>04</i><span>Мої замовлення</span><svg><use href="#i-arr"/></svg></a>
+      <a href="#" onclick="toggleNav();switchPoint();return false"><i>05</i><span>Заклад: <b id="ptName" style="font-weight:600">—</b></span><svg><use href="#i-pin"/></svg></a>
+    </nav>
+
+    <div class="dr-cats">
+      <h4>Категорії</h4>
+      <div class="dr-cl" id="drCats"></div>
+    </div>
+
+    <div class="dr-f">
+      <a class="dr-call" href="tel:0639037068" data-tel-href>
+        <svg><use href="#i-phone"/></svg>
+        <div><b data-phone>063 903 70 68</b><span>Щодня <span data-hours>10:00 — 18:00</span></span></div>
+      </a>
+      <a class="dr-so" href="https://instagram.com/_sushi_boom" target="_blank" rel="noopener" data-ig-href>
+        <svg><use href="#i-ig"/></svg> <span data-ig>@_sushi_boom</span>
+      </a>
+    </div>
+  </aside>
+</div>
+
+<header class="hero">
+  <div class="jp">寿司 · 巻き寿司</div>
+  <h1>SUSHI <b>BOOM</b></h1>
+  <p class="hsub">Японська кухня · смт <span data-city>Царичанка</span></p>
+  <div class="rule"></div>
+  <div class="acts">
+    <a class="btn gold" href="#menu">До меню</a>
+    <a class="btn ghost" href="tel:0639037068" data-tel-href><span data-phone>063 903 70 68</span></a>
+  </div>
+</header>
+
+<section id="menu">
+  <div class="sec-h">
+    <span class="tag">Меню</span>
+    <h2>Обирай своє</h2>
+  </div>
+  <div class="search-wrap">
+    <div class="search">
+      <svg class="s-ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg>
+      <input id="q" type="search" placeholder="Пошук: лосось, темпура, сет…" autocomplete="off" spellcheck="false">
+      <button class="s-clr" id="qClr" aria-label="Очистити"><svg><use href="#i-x"/></svg></button>
+    </div>
+  </div>
+  <div class="rail" id="rail"></div>
+  <div class="grid" id="grid"></div>
+  <div class="no-res" id="noRes">
+    <div class="nr-ico"><svg><use href="#i-search"/></svg></div>
+    <h3 id="nrTitle">Нічого не знайдено</h3>
+    <p id="nrText">Спробуйте іншу назву або інгредієнт</p>
+    <button class="btn btn-s" id="nrBtn" onclick="resetSearch()">Скинути пошук</button>
+  </div>
+</section>
+
+<section id="info">
+  <div class="sec-h">
+    <span class="tag">Контакти</span>
+    <h2>Де нас знайти</h2>
+  </div>
+  <div class="info-min">
+    <div class="im"><span>Графік</span><b data-hours>10:00 — 18:00</b></div>
+    <div class="im"><span>Телефон</span><a href="tel:0639037068" data-tel-href><b data-phone>063 903 70 68</b></a></div>
+    <div class="im"><span>Instagram</span><a href="https://instagram.com/_sushi_boom" target="_blank" rel="noopener" data-ig-href><b data-ig>@_sushi_boom</b></a></div>
+    <div class="im"><span>Адреса</span><b>смт <span data-city>Царичанка</span></b></div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-glow"></div>
+  <div class="brand"><span>SUSHI</span> <span>BOOM</span></div>
+  <p class="f-tag">Суші та роли з любов’ю</p>
+
+  <div class="links">
+    <a href="#menu">Меню</a>
+    <a href="#info">Контакти</a>
+    <a href="https://instagram.com/_sushi_boom" target="_blank" rel="noopener" data-ig-href>Instagram</a>
+    <a href="tel:0639037068" data-tel-href>Телефон</a>
+  </div>
+
+  <div class="f-line"></div>
+
+  <p class="cr">
+    <span class="cc">©</span> <b>SUSHI BOOM</b> <i>2026</i>
+  </p>
+
+  <a class="made" href="https://t.me/arikpromax" target="_blank" rel="noopener">
+    сайт створено <b>arawebsite</b>
+  </a>
+</footer>
+
+<div id="lb" onclick="if(event.target.id==='lb'||event.target.classList.contains('bd'))closeLb()">
+  <div class="bd"></div>
+  <div class="fig">
+    <button class="x" onclick="closeLb()"><svg><use href="#i-x"/></svg></button>
+    <img id="lbImg" alt="">
+    <div class="cap">
+      <h3 id="lbT"></h3>
+      <p id="lbD"></p>
+      <div class="price" id="lbP"></div>
+      <div><button class="btn btn-p lb-add" id="lbAdd">Додати в кошик</button></div>
+    </div>
+  </div>
+</div>
+
+<div id="cart">
+  <div class="bd" onclick="closeCart()"></div>
+  <div class="sheet">
+    <div class="sh-h">
+      <h2 id="cartTitle">Ваше замовлення</h2>
+      <button class="sh-x" onclick="closeCart()"><svg><use href="#i-x"/></svg></button>
+    </div>
+    <div class="sh-b" id="cartBody"></div>
+    <div class="sh-f" id="cartFoot"></div>
+  </div>
+</div>
+
+<button id="bar" onclick="openCart()">
+  <span class="b-l">
+    <span class="b-ct" id="barCount">0</span>
+    <span class="b-tx" id="barItems">позиції</span>
+  </span>
+  <span class="b-r">
+    <b id="barTotal">0 грн</b>
+    <span class="b-go">Оформити <svg class="bi"><use href="#i-arr"/></svg></span>
+  </span>
+</button>
+
+<div id="toast"></div>
+
+<script>
+/* ============ ДАНІ ============ */
+const SHEET_URL = 'ВСТАВ_СЮДИ_URL_APPS_SCRIPT';
+
+/* ═══════════════════ ДВІ ТОЧКИ ═══════════════════
+   Кожна точка — окрема кухня зі своїм списком сіл, телефоном,
+   інстаграмом, годинами та режимом замовлення.
+
+   order: 'std'    -> доставка / самовивіз + номер замовлення
+   order: 'tables' -> те саме + замовлення за столик (QR ?table=N)
+
+   ⚠ ПЕТРИКІВКА — ЗАГЛУШКА. Заповни phone/ig/hours/towns реальними
+   даними, коли клієнт їх дасть. Зараз ДЕМО. */
+
+const EXACT_PRICES = false;
+
+/* --- Царичанка: склад селищної ТГ, ціни орієнтовні за відстанню --- */
+const TOWNS_TSAR = [
+  {n:'Царичанка',           d:40},
+  {n:'Лисківка',            d:60},
+  {n:'Дубове',              d:60},
+  {n:'Калинівка',           d:60},
+  {n:'Тарасівка',           d:60},
+  {n:'Селянівка',           d:60},
+  {n:'Драгівка',            d:60},
+  {n:'Пилипівка',           d:60},
+  {n:'Турове',              d:80},
+  {n:'Прядівка',            d:80},
+  {n:'Заорілля',            d:80},
+  {n:'Михайлівка',          d:80},
+  {n:'Гнатівка',            d:80},
+  {n:'Бабайківка',          d:100},
+  {n:'Вербове',             d:100},
+  {n:'Кущівка',             d:100},
+  {n:'Новостроївка',        d:100},
+  {n:'Івано-Яризівка',      d:100},
+  {n:"Юр’ївка",             d:100},
+  {n:'Ненадівка',           d:120},
+  {n:'Семенівка',           d:120},
+  {n:'Преображенка',        d:120},
+  {n:'Червона Орілька',     d:120},
+  {n:'Інший населений пункт', d:null},
+];
+
+/* --- Петриківка: ЗАГЛУШКА. Впиши реальні села й тарифи. --- */
+const TOWNS_PETR = [
+  {n:'Петриківка',          d:40},
+  {n:'Курилівка',           d:60},
+  {n:'Єлизаветівка',        d:80},
+  {n:'Хутірське',           d:80},
+  {n:'Лобойківка',          d:100},
+  {n:'Інший населений пункт', d:null},
+];
+
+const POINTS = {
+  tsar: {
+    id:'tsar',
+    name:'Царичанка',
+    tagline:'смт Царичанка',
+    home:'Царичанка',
+    towns:TOWNS_TSAR,
+    phone:'0639037068',
+    phoneHuman:'063 903 70 68',
+    ig:'_sushi_boom',
+    hours:'10:00 – 18:00',
+    order:'std',                 // без столиків
+    sheet:'ВСТАВ_URL_APPS_SCRIPT_ЦАРИЧАНКА'
+  },
+  petr: {
+    id:'petr',
+    name:'Петриківка',
+    tagline:'смт Петриківка',
+    home:'Петриківка',
+    towns:TOWNS_PETR,
+    phone:'0000000000',          // ⚠ заглушка
+    phoneHuman:'000 000 00 00',  // ⚠ заглушка
+    ig:'_sushi_boom',            // ⚠ заглушка: свій інстаграм, якщо є
+    hours:'10:00 – 20:00',       // ⚠ заглушка
+    order:'tables',              // столики + QR
+    sheet:'ВСТАВ_URL_APPS_SCRIPT_ПЕТРИКІВКА'
+  }
+};
+
+/* активна точка (обирається на вході) */
+const LS_POINT='sushiboom_point';
+let PT = POINTS[ localStorage.getItem(LS_POINT) ] || null;
+
+/* похідні, що читає решта коду */
+let TOWNS     = PT ? PT.towns : TOWNS_TSAR;
+let HOME_TOWN = PT ? PT.home  : 'Царичанка';
+
+const CATS_TSAR = [
+  {id:'phil',    name:'Філадельфія'},
+  {id:'cal',     name:'Каліфорнія'},
+  {id:'maki',    name:'Макі'},
+  {id:'tempura', name:'Темпура'},
+  {id:'burger',  name:'Суші-бургери'},
+  {id:'sets',    name:'Сети'},
+];
+
+const PRODUCTS_TSAR = [
+  {c:'phil', img:'phil_klasik',        n:'Філадельфія класік',            d:'Рис, норі, крем сир, огірок, авокадо, лосось', p:350, top:1},
+  {c:'phil', img:'phil_tunec',         n:'Філадельфія тунець',            d:'Рис, норі, крем сир, огірок, авокадо, тунець, соус унагі', p:300},
+  {c:'phil', img:'phil_vugor',         n:'Філадельфія з вугрем',          d:'Рис, норі, крем сир, огірок, авокадо, вугор, соус унагі, кунжут', p:360},
+  {c:'phil', img:'phil_krevetka',      n:'Філадельфія креветка',          d:'Рис, норі, крем сир, огірок, авокадо, креветка', p:340},
+  {c:'phil', img:'maldivy',            n:'Мальдіви',                      d:'Рис, норі, крем сир, авокадо, огірок, сир чедер', p:380, top:1},
+  {c:'phil', img:'phil_krab_ikra',     n:'Філадельфія краб в ікрі',       d:'Рис, норі, крем сир, сніжний краб, ікра тобіко', p:260},
+  {c:'phil', img:'phil_tunec_kunzhut', n:'Філадельфія тунець в кунжуті',  d:'Рис, норі, крем сир, огірок, тунець, кунжут', p:320},
+  {c:'phil', img:'phil_losos_ikra',    n:'Філадельфія лосось в ікрі',     d:'Рис, норі, авокадо, огірок, лосось, ікра тобіко', p:320},
+  {c:'phil', img:'phil_losos_kunzhut', n:'Філадельфія лосось в кунжуті',  d:'Рис, норі, крем сир, огірок, лосось, кунжут', p:320},
+  {c:'phil', img:'phil_tunec_ikra',    n:'Філадельфія тунець в ікрі',     d:'Рис, норі, крем сир, тунець, огірок, ікра тобіко', p:300},
+
+  {c:'cal', img:'cal_losos_ikra',      n:'Каліфорнія лосось в ікрі',      d:'Рис, норі, авокадо, огірок, лосось, ікра тобіко', p:300},
+  {c:'cal', img:'cal_kunzhut',         n:'Каліфорнія в кунжуті',          d:'Рис, норі, огірок, авокадо, лосось, кунжут', p:300},
+  {c:'cal', img:'cal_tunec_ikra',      n:'Каліфорнія тунець в ікрі',      d:'Рис, норі, огірок, авокадо, тунець, ікра тобіко', p:300},
+  {c:'cal', img:'cal_tunec_kunzhut',   n:'Каліфорнія тунець в кунжуті',   d:'Рис, норі, тунець, огірок, авокадо', p:300},
+  {c:'cal', img:'syrnyi_rol',          n:'Сирний рол',                    d:'Рис, норі, крем сир, сир чедер, соус унагі', p:280},
+
+  {c:'maki', img:'maki_ogirok',        n:'Макі з огірком',                d:'Рис, норі, огірок', p:150},
+  {c:'maki', img:'maki_tunec',         n:'Макі з тунцем',                 d:'Рис, норі, тунець', p:200},
+  {c:'maki', img:'maki_krevetka',      n:'Макі з креветкою',              d:'Рис, норі, креветка', p:220},
+  {c:'maki', img:'maki_losos',         n:'Макі з лососем',                d:'Рис, норі, лосось', p:220},
+  {c:'maki', img:'maki_vugor',         n:'Макі з вугрем',                 d:'Рис, норі, вугор, кунжут, соус унагі', p:240},
+
+  {c:'tempura', img:'tempura_losos',    n:'Темпура з лососем',   d:'Рис, норі, крем сир, лосось, авокадо, кляр, сухарі панко, соус унагі', p:350},
+  {c:'tempura', img:'tempura_tunec',    n:'Темпура з тунцем',    d:'Рис, норі, крем сир, цибуля зелена, тунець, сир чедер, кляр, сухарі панко, соус', p:330},
+  {c:'tempura', img:'tempura_krevetka', n:'Темпура з креветкою', d:'Рис, норі, крем сир, креветка, сир чедер, кляр, сухарі панко, соус теріякі', p:350},
+
+  {c:'burger', img:'burger_krevetka', n:'Суші бургер з креветкою', d:'Рис, норі, крем сир, помідор, креветка, авокадо, моцарела, соус солодкий чілі, кляр, сухарі панко', p:360},
+  {c:'burger', img:'burger_losos',    n:'Суші бургер з лососем',   d:'Рис, норі, крем сир, помідор, лосось, авокадо, моцарела, соус унагі, кляр, сухарі панко', p:360, top:1},
+  {c:'burger', img:'burger_tunec',    n:'Суші бургер з тунцем',    d:'Рис, норі, крем сир, помідор, тунець, авокадо, моцарела, соус теріякі, кляр, сухарі панко', p:360},
+
+  {c:'sets', img:'set_maki',      n:'Сет Макі',       d:'Макі краб · Макі огірок · Макі креветка · Макі тунець · Макі лосось', p:900,  u:'40 шт'},
+  {c:'sets', img:'set_miniboom',  n:'Сет MiniBoom',   d:'Філадельфія краб в ікрі · Філадельфія тунець в стружці тунця · Макі креветка', p:770,  u:'24 шт'},
+  {c:'sets', img:'set_goodboom',  n:'Сет GoodBoom',   d:'Філадельфія лосось в кунжуті · Філадельфія краб в ікрі · Філадельфія тунець в стружці тунця · Макі лосось · Макі огірок', p:1200, u:'40 шт', top:1},
+  {c:'sets', img:'set_superboom', n:'Сет SuperBoom',  d:'Філадельфія лосось в кунжуті · Філадельфія краб в ікрі · Філадельфія тунець в стружці тунця · Сирний рол · Макі лосось · Макі огірок', p:1500, u:'48 шт'},
+];
+
+/* --- Петриківка: меню поки порожнє. Наповниш пізніше тим самим
+   форматом, що PRODUCTS_TSAR (n,c,p,img,top). --- */
+const CATS_PETR     = [];
+const PRODUCTS_PETR = [];
+
+/* прив'язка меню до точок */
+POINTS.tsar.cats = CATS_TSAR;
+POINTS.tsar.menu = PRODUCTS_TSAR;
+POINTS.petr.cats = CATS_PETR;
+POINTS.petr.menu = PRODUCTS_PETR;
+
+/* активне меню = меню обраної точки (Царичанка до вибору) */
+let CATS     = PT ? PT.cats : CATS_TSAR;
+let PRODUCTS = PT ? PT.menu : PRODUCTS_TSAR;
+
+/* ============ HERO ============ */
+window.addEventListener('load',()=>setTimeout(()=>document.getElementById('pre').classList.add('out'),900));
+
+/* ============ БУРГЕР / DRAWER ============ */
+function toggleNav(){
+  buzz(6);
+  const d=document.getElementById('drawer');
+  const on=!d.classList.contains('on');
+  d.classList.toggle('on',on);
+  document.body.classList.toggle('nav-on',on);
+  document.body.classList.toggle('lock',on);
+}
+addEventListener('keydown',e=>{
+  if(e.key==='Escape' && document.getElementById('drawer').classList.contains('on')) toggleNav();
+});
+
+/* категорії в drawer (заповнюються після ініціалізації меню) */
+function initDrawerCats(){
+  document.getElementById('drCats').innerHTML =
+    CATS.map(c=>`<button onclick="jumpCat('${c.id}')">${c.name}</button>`).join('');
+}
+
+function jumpCat(id){
+  toggleNav();
+  qEl.value=''; query=''; qBox.classList.remove('has');
+  render();
+  const sec=document.getElementById('mcat-'+id);
+  if(!sec) return;
+  spyLock=true; setActiveChip(id);
+  setTimeout(()=>{
+    sec.scrollIntoView({behavior:'smooth'});
+    clearTimeout(spyT); spyT=setTimeout(()=>{ spyLock=false; },800);
+  },80);
+}
+
+/* ============ ВАУ-ЕФЕКТИ ============ */
+
+/* 1. КАНВАС: вимкнено — фон лишається чистим градієнтом */
+(()=>{
+  return; /* частинки вимкнено на вимогу дизайну */
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  const cv=document.getElementById('fx');
+  if(!cv) return;
+  const ctx=cv.getContext('2d');
+  let w,h,dots=[];
+  const DPR=Math.min(devicePixelRatio||1,2);
+
+  function size(){
+    w=cv.width=innerWidth*DPR; h=cv.height=innerHeight*DPR;
+    cv.style.width=innerWidth+'px'; cv.style.height=innerHeight+'px';
+  }
+  function seed(){
+    const n=Math.round(innerWidth/26);
+    dots=Array.from({length:n},()=>({
+      x:Math.random()*w, y:Math.random()*h,
+      r:(Math.random()*2.1+0.7)*DPR,
+      vy:(Math.random()*.22+.06)*DPR,
+      vx:(Math.random()-.5)*.12*DPR,
+      a:Math.random()*Math.PI*2,
+      spin:(Math.random()-.5)*.014,
+      nori:Math.random()<.28
+    }));
+  }
+  size(); seed();
+  addEventListener('resize',()=>{size();seed();},{passive:true});
+
+  (function loop(){
+    ctx.clearRect(0,0,w,h);
+    for(const d of dots){
+      d.y+=d.vy; d.x+=d.vx; d.a+=d.spin;
+      if(d.y>h+8){ d.y=-8; d.x=Math.random()*w; }
+      if(d.x<-8) d.x=w+8; if(d.x>w+8) d.x=-8;
+      ctx.save(); ctx.translate(d.x,d.y); ctx.rotate(d.a);
+      if(d.nori){
+        ctx.fillStyle='rgba(255,255,255,.22)';
+        ctx.fillRect(-d.r,-d.r*.55,d.r*2,d.r*1.1);
+      }else{
+        ctx.fillStyle='rgba(243,239,231,.30)';
+        ctx.beginPath();
+        ctx.ellipse(0,0,d.r,d.r*.62,0,0,Math.PI*2);
+        ctx.fill();
+      }
+      ctx.restore();
+    }
+    requestAnimationFrame(loop);
+  })();
+})();
+
+/* 2. КІЛЬЦЕ-КУРСОР, що «липне» до кнопок (десктоп) */
+(()=>{
+  if(!matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+  const ring=document.createElement('div');
+  ring.id='ring'; document.body.appendChild(ring);
+  let x=innerWidth/2,y=innerHeight/2,tx=x,ty=y,scale=1;
+
+  addEventListener('mousemove',e=>{tx=e.clientX;ty=e.clientY;},{passive:true});
+  document.addEventListener('pointerover',e=>{
+    const t=e.target.closest?.('.btn,.add,.chip,.cart-btn,.burger,a,.item');
+    ring.classList.toggle('big',!!t);
+  },{passive:true});
+
+  (function tick(){
+    x+=(tx-x)*.16; y+=(ty-y)*.16;
+    ring.style.transform=`translate(${x}px,${y}px) translate(-50%,-50%)`;
+    requestAnimationFrame(tick);
+  })();
+})();
+
+/* 3. РОЗДІЛЬНИК-ХВИЛЯ: запускаємо рух, коли секція з'явилась.
+   prefers-reduced-motion глушиться в CSS. */
+/* 4. тактильний відгук */
+function buzz(ms=8){ try{ navigator.vibrate?.(ms); }catch(e){} }
+
+
+/* 7. лічильники */
+function countUp(el){
+  const to=+el.dataset.to, suf=el.dataset.suf||'';
+  const dur=1400, t0=performance.now();
+  (function tick(now){
+    const p=Math.min((now-t0)/dur,1);
+    const e=1-Math.pow(1-p,3);            // easeOutCubic
+    el.textContent=Math.round(to*e)+suf;
+    if(p<1) requestAnimationFrame(tick);
+  })(t0);
+}
+
+/* 8. поява при скролі + запуск лічильників */
+function initReveal(){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{
+    if(!e.isIntersecting) return;
+    e.target.classList.add('in');
+    e.target.querySelectorAll('b[data-to]').forEach(countUp);
+    io.unobserve(e.target);
+  }),{threshold:.25});
+  document.querySelectorAll('.rv,.sec-h').forEach(el=>io.observe(el));
+}
+
+/* 6. «печатка» на кнопках */
+document.addEventListener('pointerdown',e=>{
+  const b=e.target.closest?.('.btn,.submit,.add'); if(!b) return;
+  const r=b.getBoundingClientRect();
+  const d=Math.max(r.width,r.height)*.55;
+  const s=document.createElement('span');
+  s.className='rip';
+  s.style.cssText=`width:${d}px;height:${d}px;left:${e.clientX-r.left}px;top:${e.clientY-r.top}px`;
+  b.appendChild(s);
+  setTimeout(()=>s.remove(),600);
+},{passive:true});
+addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('solid',scrollY>40);
+},{passive:true});
+
+/* ============ MENU RENDER ============ */
+let filter='all';
+const rail=document.getElementById('rail');
+const grid=document.getElementById('grid');
+
+/* чипси будуються в buildChips() під час застосування точки */
+
+/* нормалізація: регістр + і/ї/й та е/є вважаємо взаємозамінними */
+const norm = s => s.toLowerCase()
+  .replace(/[іїй]/g,'и').replace(/[еє]/g,'е').replace(/ґ/g,'г');
+
+let query='';
+const esc = s => String(s).replace(/[&<>"']/g,c=>(
+  {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+function mark(text){
+  if(!query) return esc(text);
+  const nt=norm(text), nq=norm(query);
+  let out='', i=0;
+  while(true){
+    const j=nt.indexOf(nq,i);
+    if(j===-1){ out+=esc(text.slice(i)); break; }
+    out+=esc(text.slice(i,j))+'<mark>'+esc(text.slice(j,j+query.length))+'</mark>';
+    i=j+query.length;
+  }
+  return out;
+}
+
+function matches(p){
+  if(!query) return true;
+  const nq=norm(query);
+  return norm(p.n).includes(nq) || norm(p.d).includes(nq)
+      || norm(CATS.find(c=>c.id===p.c).name).includes(nq);
+}
+
+/* позиція меню: рядок, фото (або монограма) справа.
+   ФОТО: додаси в IMG ключ з поля img страви — картинка підхопиться сама. */
+function card(p){
+  const i = PRODUCTS.indexOf(p);
+  const pcs = p.u || '8 шт';
+  const im = p.img && IMG[p.img];
+  return `<article class="item">
+    <div class="info">
+      <h3>${mark(p.n)}${p.top?'<em class="hit">хіт</em>':''}</h3>
+      <p class="desc">${mark(p.d)}</p>
+      <div class="meta">
+        <span class="price">${p.p} грн</span>
+        <span class="w">${pcs}</span>
+        <span class="ctl"><button class="add" onclick="event.stopPropagation(); add(${i},this)">Додати</button></span>
+      </div>
+    </div>
+    <figure class="thumb">${im
+      ? `<img src="${im}" alt="${esc(p.n)}" loading="lazy">`
+      : `<span>${esc(p.n).trim()[0]||'寿'}</span>`}</figure>
+  </article>`;
+}
+
+/* меню секціями за категоріями (як у делівері-сервісах);
+   пошук перемикає на плаский список результатів */
+function render(){
+  if(query){
+    const list = PRODUCTS.filter(p=>matches(p));
+    grid.innerHTML = list.length
+      ? `<div class="mcat"><div class="mcat-g">${list.map(card).join('')}</div></div>` : '';
+    document.getElementById('noRes').classList.toggle('on', list.length===0);
+  }else{
+    grid.innerHTML = CATS.map(c=>{
+      const items = PRODUCTS.filter(p=>p.c===c.id);
+      if(!items.length) return '';
+      return `<div class="mcat" id="mcat-${c.id}" data-cat="${c.id}">
+        <div class="mcat-h"><h2>${c.name}</h2><i>${items.length}</i></div>
+        <div class="mcat-g">${items.map(card).join('')}</div>
+      </div>`;
+    }).join('');
+    document.getElementById('noRes').classList.toggle('on', PRODUCTS.length===0);
+    requestAnimationFrame(spyTick);
+  }
+  observe();
+}
+
+/* --- прив'язка пошуку --- */
+const qEl=document.getElementById('q');
+const qBox=qEl.closest('.search');
+let qT;
+qEl.addEventListener('input',()=>{
+  qBox.classList.toggle('has', qEl.value.length>0);
+  clearTimeout(qT);
+  qT=setTimeout(()=>{ query=qEl.value.trim(); render(); },140);
+});
+qEl.addEventListener('keydown',e=>{ if(e.key==='Escape') resetSearch(); });
+document.getElementById('qClr').onclick=()=>{ resetSearch(); qEl.focus(); };
+
+function resetSearch(){
+  qEl.value=''; query=''; qBox.classList.remove('has');
+  render();
+}
+
+function observe(){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+  }),{threshold:.08});
+  grid.querySelectorAll('.item').forEach((c,i)=>{
+    c.style.transitionDelay=(i%3)*0.05+'s';
+    io.observe(c);
+  });
+}
+/* перший render() робить applyPoint() після вибору точки */
+
+/* ============ LIGHTBOX ============ */
+let lbIdx=null;
+function openLb(i){
+  lbIdx=i; const p=PRODUCTS[i];
+  lbImg.src=IMG[p.img]; lbImg.alt=p.n;
+  lbT.textContent=p.n; lbD.textContent=p.d;
+  lbP.innerHTML=`${p.p} грн${p.u?`<small style="font-size:11px;color:var(--muted)"> / ${p.u}</small>`:''}`;
+  document.getElementById('lb').classList.add('on');
+  document.body.classList.add('lock');
+}
+function closeLb(){
+  document.getElementById('lb').classList.remove('on');
+  if(!document.getElementById('cart').classList.contains('on'))
+    document.body.classList.remove('lock');
+}
+document.getElementById('lbAdd').onclick=()=>{ add(lbIdx); closeLb(); };
+addEventListener('keydown',e=>{ if(e.key==='Escape'){closeLb();closeCart();} });
+
+/* ============ CART ============ */
+let cart={}, mode='delivery', sent=false;
+
+
+/* ---- збереження кошика ---- */
+const LS='sushiboom_cart_v2';   // v2 = ключі за назвами страв
+function saveCart(){
+  try{
+    /* зберігаємо за НАЗВАМИ, не за індексами:
+       меню змінюється, індекси з'їжджають, і гість
+       побачив би в кошику зовсім іншу страву */
+    const named={};
+    for(const [i,q] of Object.entries(cart)){
+      if(PRODUCTS[i]) named[PRODUCTS[i].n]=q;
+    }
+    localStorage.setItem(LS, JSON.stringify({cart:named, mode}));
+  }catch(e){}
+}
+function loadCart(){
+  try{
+    const raw=localStorage.getItem(LS); if(!raw) return;
+    const d=JSON.parse(raw);
+    const clean={};
+    for(const [key,q] of Object.entries(d.cart||{})){
+      const k=+q;
+      if(!Number.isFinite(k) || k<1) continue;
+      /* ключ = назва страви. Старий формат (числові індекси)
+         свідомо ігноруємо: індекс міг вказувати вже на іншу страву. */
+      if(/^\d+$/.test(key)) continue;
+      const i=PRODUCTS.findIndex(p=>p.n===key);
+      if(i===-1) continue;                 // страву прибрали з меню
+      clean[i]=(clean[i]||0)+Math.min(k,99);
+    }
+    cart=clean;
+    if(d.mode==='pickup'||d.mode==='delivery') mode=d.mode;
+  }catch(e){ cart={}; }
+}
+
+/* ---- нижня панель ---- */
+function syncBar(){
+  const n=Object.values(cart).reduce((a,b)=>a+b,0);
+  const bar=document.getElementById('bar');
+  const open=document.getElementById('cart').classList.contains('on');
+  const show = n>0 && !open;
+  bar.classList.toggle('on',show);
+  document.body.classList.toggle('bar-on',show);
+  if(n>0){
+    document.getElementById('barCount').textContent=n;
+    document.getElementById('barItems').textContent=plural(n);
+    document.getElementById('barTotal').textContent=total()+' грн';
+  }
+  liftToast(show);
+}
+
+/* тост стоїть над панеллю через CSS-змінну --toast-b (клас bar-on).
+   Живий замір прибрано: getComputedStyle під час виїзду панелі міг
+   вертати проміжне значення й тост опускався під панель. */
+function liftToast(barVisible){
+  /* нічого не робимо inline — позицію повністю задає CSS.
+     Лишили функцію, щоб не чіпати місця викликів. */
+}
+function plural(n){
+  const a=n%10, b=n%100;
+  if(a===1 && b!==11) return 'позиція';
+  if(a>=2 && a<=4 && (b<12||b>14)) return 'позиції';
+  return 'позицій';
+}
+
+function toast(t){
+  const el=document.getElementById('toast');
+  el.textContent=t; el.classList.add('on');
+  clearTimeout(el._t); el._t=setTimeout(()=>el.classList.remove('on'),1900);
+}
+function add(i,btn){
+  buzz(9);
+  cart[i]=(cart[i]||0)+1;
+  badgeUp();                       // спершу оновлюємо кошик і плашку (ставить bar-on)
+  toast('Додано: '+PRODUCTS[i].n); // тост з'являється вже над панеллю
+  if(btn){btn.classList.add('done');btn.innerHTML='<svg class="ai"><use href="#i-check"/></svg>';
+    setTimeout(()=>{btn.classList.remove('done');btn.textContent='Додати';},900);}
+}
+function badgeUp(){
+  const n=Object.values(cart).reduce((a,b)=>a+b,0);
+  const b=document.getElementById('badge');
+  b.textContent=n; b.classList.toggle('on',n>0);
+  syncBar();
+  saveCart();
+}
+const total=()=>Object.entries(cart).reduce((s,[i,q])=>s+PRODUCTS[i].p*q,0);
+
+/* обраний населений пункт */
+const townObj = () => TOWNS.find(t=>t.n===F.town) || null;
+
+/* вартість доставки: число, або null якщо невідома / самовивіз */
+function delivFee(){
+  if(mode!=='delivery') return 0;
+  const t=townObj();
+  return (t && typeof t.d==='number') ? t.d : null;
+}
+/* підсумок до сплати (без невідомої доставки) */
+const grandTotal = () => total() + (delivFee()||0);
+
+/* людський підпис вартості доставки */
+function delivLabel(){
+  const t=townObj();
+  if(!t) return 'Оберіть населений пункт';
+  if(t.d===null) return 'Уточнить оператор';
+  if(t.d===0)    return 'Безкоштовно';
+  return (EXACT_PRICES?'':'~') + t.d + ' грн';
+}
+
+function openCart(){
+  sent=false; step=1;
+  document.getElementById('cart').classList.add('on');
+  document.body.classList.add('lock');
+  syncBar();
+  drawCart();
+}
+function closeCart(){
+  document.getElementById('cart').classList.remove('on');
+  document.body.classList.remove('lock');
+  syncBar();
+}
+function qty(i,d){
+  cart[i]+=d; if(cart[i]<1) delete cart[i];
+  badgeUp();
+  if(!Object.keys(cart).length) step=1;
+  drawCart();
+}
+
+/* ============ ДОДАТКИ (напої/соуси) ============
+   Коли клієнт дасть список — просто заповни масив.
+   Поки порожній — стрічка апселу не показується.        */
+const EXTRAS = [
+  // {img:'...', n:'Кока-Кола 0.5', p:35},
+];
+
+let step = 1;   // 1 = замовлення, 2 = оформлення
+
+function goStep(n){
+  if(n===2 && !Object.keys(cart).length) return;
+  step=n;
+  document.getElementById('cartBody').scrollTop=0;
+  drawCart();
+}
+
+function drawCart(){
+  const body=document.getElementById('cartBody');
+  const foot=document.getElementById('cartFoot');
+  const keys=Object.keys(cart);
+
+  if(!keys.length){
+    document.getElementById('cartTitle').textContent='Ваше замовлення';
+    body.innerHTML=`<div class="empty"><svg class="ei"><use href="#i-roll"/></svg><p>Кошик порожній.<br>Обери щось смачне з меню.</p></div>`;
+    foot.innerHTML=''; return;
+  }
+
+  if(step===1) return drawStep1(body,foot,keys);
+  drawStep2(body,foot);
+}
+
+/* ---------- КРОК 1: тільки замовлення ---------- */
+function drawStep1(body,foot,keys){
+  document.getElementById('cartTitle').innerHTML=
+    `Ваше замовлення <i class="stp">1/2</i>`;
+
+  const inCart = new Set(keys.map(Number));
+  const upsell = EXTRAS
+    .map(e=>PRODUCTS.indexOf(PRODUCTS.find(p=>p.n===e.n)))
+    .filter(i=>i>-1 && !inCart.has(i));
+
+  body.innerHTML = keys.map(i=>{
+    const p=PRODUCTS[i];
+    return `<div class="line">
+      <div class="n"><b>${p.n}</b><span>${p.p} грн</span></div>
+      <div class="qty">
+        <button onclick="qty(${i},-1)">−</button>
+        <b>${cart[i]}</b>
+        <button onclick="qty(${i},1)">+</button>
+      </div>
+    </div>`;
+  }).join('')
+  + (upsell.length ? `
+    <div class="ups">
+      <h4>Додати до замовлення</h4>
+      <div class="ups-row">
+        ${upsell.map(i=>{
+          const p=PRODUCTS[i];
+          return `<button class="ups-c" onclick="add(${i});drawCart()">
+            <span class="un">${p.n}</span>
+            <span class="up">${p.p} грн</span>
+            <span class="ua">+</span>
+          </button>`;
+        }).join('')}
+      </div>
+    </div>` : '');
+
+  foot.innerHTML=`
+    <div class="total"><span>Разом</span><b>${total()} грн</b></div>
+    <button class="submit" onclick="goStep(2)">Далі <svg class="sic"><use href="#i-arr"/></svg></button>`;
+}
+
+/* ---------- КРОК 2: оформлення ---------- */
+function drawStep2(body,foot){
+  document.getElementById('cartTitle').innerHTML=
+    `<button class="bk" onclick="goStep(1)"><svg><use href="#i-arr"/></svg></button> Оформлення <i class="stp">2/2</i>`;
+
+  const n=Object.values(cart).reduce((a,b)=>a+b,0);
+  const del = mode==='delivery';
+
+  const fee=delivFee();
+  body.innerHTML=`
+    <div class="rcap">
+      <div class="rc-l"><span>${n} ${plural(n)}</span><b>${total()} грн</b></div>
+      ${mode==='delivery' ? `
+      <div class="rc-l"><span>Доставка${F.town?` — ${esc(F.town)}`:''}</span>
+        <b class="${fee===null?'q':''}">${fee===null?'—':(fee===0?'безкоштовно':(EXACT_PRICES?'':'~')+fee+' грн')}</b></div>` : ''}
+      <div class="rc-l rc-t"><span>До сплати</span>
+        <b>${(!EXACT_PRICES && fee)?'~':''}${grandTotal()} грн${fee===null?'<i class="plus">+ доставка</i>':''}</b></div>
+    </div>
+
+    <div class="fld"><label>Ім’я</label>
+      <input id="f_name" placeholder="Ваше ім’я" value="${esc(F.name)}"></div>
+    <div class="fld"><label>Телефон</label>
+      <input id="f_phone" class="tel-in" type="tel" inputmode="numeric"
+             autocomplete="tel" maxlength="19"
+             placeholder="+380 (00) 000 00 00" value="${esc(F.phone)}"
+             oninput="fmtPhone(this)" onfocus="telFocus(this)" onblur="telBlur(this)"
+             onclick="telGuard(this)" onkeydown="telKey(event,this)">
+    </div>
+
+    <div id="addrBox" class="${del?'':'hidden'}">
+      <label class="lbl">Адреса доставки</label>
+
+      <div class="fld">
+        <select id="f_town" onchange="pickTown(this.value)">
+          <option value="" ${!F.town?'selected':''} disabled>Населений пункт…</option>
+          ${TOWNS.map(t=>`<option value="${esc(t.n)}" ${F.town===t.n?'selected':''}>${esc(t.n)}</option>`).join('')}
+        </select>
+      </div>
+
+      <div class="fld ${F.town==='Інший населений пункт'?'':'hidden'}" id="townOther">
+        <input id="f_townOther" placeholder="Назва села / міста" value="${esc(F.townOther)}">
+      </div>
+
+      <div class="fld"><input id="f_street" placeholder="Вулиця, напр. Центральна" value="${esc(F.street)}"></div>
+      <div class="row2">
+        <div class="fld"><input id="f_house" placeholder="№ будинку" value="${esc(F.house)}"></div>
+        <div class="fld"><input id="f_flat" placeholder="Квартира" value="${esc(F.flat)}"></div>
+      </div>
+      <div class="row2">
+        <div class="fld"><input id="f_floor" placeholder="Поверх" value="${esc(F.floor)}"></div>
+        <div class="fld"><input id="f_entr" placeholder="Під’їзд" value="${esc(F.entr)}"></div>
+      </div>
+      <div class="fld"><input id="f_code" placeholder="Код домофону" value="${esc(F.code)}"></div>
+
+      <div class="dbox ${F.town && F.town!==HOME_TOWN ? 'far':''}">
+        <div class="d-ic"><svg><use href="#i-scooter"/></svg></div>
+        <div>
+          <b>Вартість доставки</b>
+          <p>${delivLabel()}</p>
+          ${F.town && F.town!==HOME_TOWN
+            ? `<small class="warn">Виїзд за межі ${esc(HOME_TOWN)} — час доставки може бути довшим.</small>`
+            : ''}
+          <small>${EXACT_PRICES
+            ? 'Остаточну суму підтвердить оператор.'
+            : 'Ціна орієнтовна — точну суму підтвердить оператор.'}</small>
+        </div>
+      </div>
+    </div>
+
+    ${TABLES_ON ? `
+    <div class="table-banner">
+      <svg viewBox="0 0 24 24" width="18" height="18"><use href="#i-pin"/></svg>
+      <span>Замовлення за <b>столик №${TABLE_NO}</b></span>
+    </div>` : ''}
+
+        <label class="lbl">Спосіб отримання</label>
+    <div class="radios">
+      ${radio('mode','delivery', del,'Доставка')}
+      ${radio('mode','pickup', mode==='pickup','Самовивіз')}
+    </div>
+
+        <label class="lbl">На коли?</label>
+    <div class="radios">
+      ${radio('when','asap', F.when==='asap','Якнайшвидше')}
+      ${radio('when','time', F.when==='time','На годину')}
+    </div>
+    <div class="fld ${F.when==='time'?'':'hidden'}" id="timeBox">
+      <input id="f_time" type="time" value="${esc(F.time)}">
+    </div>
+
+    <label class="lbl">Скільки осіб?</label>
+    <div class="ppl">
+      <button onclick="ppl(-1)">−</button>
+      <b id="pplN">${F.ppl}</b>
+      <button onclick="ppl(1)">+</button>
+      <span class="ppl-h">приборів</span>
+    </div>
+
+    <label class="lbl">Оплата</label>
+    <div class="radios">
+      ${radio('pay','cash', F.pay==='cash','Готівкою')}
+    </div>
+        <div class="fld ${F.pay==='cash'?'':'hidden'}" id="changeBox">
+      <input id="f_change" inputmode="numeric" placeholder="Решта з… напр. 1000 грн" value="${esc(F.change)}">
+    </div>
+    <div class="radios">
+      ${radio('pay','card', F.pay==='card','Карткою / переказом')}
+    </div>
+    <p class="hint">Оберіть бажаний спосіб — підтвердимо його під час замовлення.</p>
+
+    <div class="fld"><label>Коментар (необов’язково)</label>
+      <textarea id="f_note" placeholder="напр. без васабі, більше імбиру…">${esc(F.note)}</textarea></div>`;
+
+  foot.innerHTML=`
+    <button class="submit" id="sendBtn" onclick="send()">
+      <svg class="sic"><use href="#i-send"/></svg>
+      Замовити на ${(!EXACT_PRICES && delivFee())?'~':''}${grandTotal()} грн
+    </button>
+    <p class="alt">або напишіть нам:
+      <a href="https://instagram.com/_sushi_boom" target="_blank" rel="noopener"><svg class="bi"><use href="#i-ig"/></svg> @_sushi_boom</a></p>`;
+
+  bindFields();
+}
+
+function radio(group,val,on,label){
+  return `<button class="rd ${on?'on':''}" onclick="pick('${group}','${val}')">
+    <i></i><span>${label}</span></button>`;
+}
+
+function pick(group,val){
+  saveFields();
+  if(group==='mode'){ mode=val; }
+  else { F[group]=val; }
+  saveCart(); drawCart();
+}
+
+function pickTown(v){
+  saveFields();
+  F.town=v;
+  saveCart(); drawCart();
+}
+
+function ppl(d){
+  saveFields();
+  F.ppl=Math.max(1,Math.min(20,F.ppl+d));
+  document.getElementById('pplN').textContent=F.ppl;
+  saveCart();
+}
+
+/* поля форми переживають перемальовування */
+const FKEYS=['name','phone','townOther','street','house','flat','floor','entr','code','time','change','note'];
+const F={name:'',phone:'',town:'',townOther:'',street:'',house:'',flat:'',floor:'',entr:'',code:'',
+         time:'',change:'',note:'',when:'asap',pay:'cash',ppl:2};
+
+function saveFields(){
+  FKEYS.forEach(k=>{ const el=document.getElementById('f_'+k); if(el) F[k]=el.value; });
+}
+function bindFields(){
+  FKEYS.forEach(k=>{ const el=document.getElementById('f_'+k);
+    if(el) el.addEventListener('input',()=>{F[k]=el.value;}); });
+}
+function setMode(m){ pick('mode',m); }
+
+async function send(){
+  if(sent) return;
+  saveFields();
+
+  const name=F.name.trim(), phone=fullPhone();
+  if(!name) return toast("Вкажіть ім’я");
+  if(!phone) return toast('Вкажіть номер: 9 цифр після +380');
+  if(!phoneValid()) return toast('Перевірте код оператора');
+
+  if(mode==='delivery'){
+    if(!F.town) return toast('Оберіть населений пункт');
+    if(F.town==='Інший населений пункт' && !F.townOther.trim())
+      return toast('Вкажіть назву населеного пункту');
+    if(!F.street.trim()) return toast('Вкажіть вулицю');
+    if(!F.house.trim())  return toast('Вкажіть номер будинку');
+  }
+  if(F.when==='time' && !F.time) return toast('Вкажіть час');
+
+  const townName = mode==='delivery'
+    ? (F.town==='Інший населений пункт' ? F.townOther.trim() : F.town)
+    : '';
+  const outside = mode==='delivery' && townName !== HOME_TOWN;
+
+  const addr = mode==='delivery'
+    ? [ townName,
+        `вул. ${F.street.trim()}, ${F.house.trim()}`,
+        F.flat.trim()  && `кв. ${F.flat.trim()}`,
+        F.floor.trim() && `пов. ${F.floor.trim()}`,
+        F.entr.trim()  && `під’їзд ${F.entr.trim()}`,
+        F.code.trim()  && `домофон ${F.code.trim()}`
+      ].filter(Boolean).join(', ')
+    : '—';
+
+  /* демо-режим: поки не вставлений URL Apps Script цієї точки */
+  const sheetUrl = (PT && PT.sheet) || SHEET_URL;
+  if(!/^https:\/\//.test(sheetUrl)){
+    sent=false;
+    return toast('Демо-режим: бекенд ще не підключено');
+  }
+
+  sent=true;
+  const btn=document.getElementById('sendBtn');
+  btn.disabled=true; btn.textContent='Надсилаємо…';
+
+  const items=Object.entries(cart).map(([i,q])=>`${PRODUCTS[i].n} × ${q} = ${PRODUCTS[i].p*q} грн`).join('\n');
+  const fee=delivFee();
+  const orderNo = makeOrderNo();
+  const payload={
+    date:new Date().toLocaleString('uk-UA'),
+    orderNo,
+    point: (PT && PT.name) || '—',
+    table: TABLES_ON ? ('Столик №'+TABLE_NO) : '—',
+    name, phone,
+    type: mode==='delivery'?'Доставка':'Самовивіз',
+    town: townName || '—',
+    zone: mode!=='delivery' ? '—' : (outside ? `⚠ ПОЗА ${HOME_TOWN.toUpperCase()}` : HOME_TOWN),
+    address: addr,
+    when: F.when==='asap' ? 'Якнайшвидше' : ('На '+F.time),
+    persons: F.ppl,
+    pay: F.pay==='cash'
+      ? ('Готівкою'+(F.change.trim()?` (решта з ${F.change.trim()})`:''))
+      : 'Карткою / переказом',
+    items,
+    subtotal: total()+' грн',
+    delivery: mode!=='delivery' ? '—'
+      : (fee===null ? 'уточнити'
+      : (fee===0 ? 'безкоштовно'
+      : fee+' грн'+(EXACT_PRICES?'':' (орієнтовно)'))),
+    total: grandTotal()+' грн'+(fee===null?' + доставка':'')
+      +((!EXACT_PRICES && fee)?' (з орієнтовною доставкою)':''),
+    note: F.note.trim() || '—'
+  };
+
+  try{
+    await fetch(sheetUrl,{
+      method:'POST', mode:'no-cors',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body:JSON.stringify(payload)
+    });
+  }catch(e){ /* no-cors: відповідь недоступна, це нормально */ }
+
+  saveOrder(orderNo, payload);
+  initOrders();
+
+  document.getElementById('cartTitle').textContent='Готово';
+  document.getElementById('cartBody').innerHTML=`
+    <div class="ok">
+      <div class="ic2"><svg><use href="#i-check"/></svg></div>
+      <h3>Замовлення прийнято!</h3>
+      <div class="ono">
+        <span>Номер замовлення</span>
+        <b id="onoV">${esc(orderNo)}</b>
+        <button class="ono-c" onclick="copyNo('${esc(orderNo)}')">Копіювати</button>
+      </div>
+      <p>Ми зателефонуємо вам найближчим часом<br>для підтвердження.</p>
+    </div>`;
+  document.getElementById('cartFoot').innerHTML=
+    `<button class="submit" onclick="clearCart()">Чудово</button>`;
+}
+
+/* ====== НОМЕР ЗАМОВЛЕННЯ ======
+   Формат: SB-250710-4F2A
+   Дата робить його читабельним, хвіст — унікальним.
+   Справжню наскрізну нумерацію (№1, №2…) веде Google Sheets:
+   Apps Script може повернути свій номер рядка — тоді він головніший. */
+function makeOrderNo(){
+  const d=new Date();
+  const ymd = String(d.getFullYear()).slice(2)
+            + String(d.getMonth()+1).padStart(2,'0')
+            + String(d.getDate()).padStart(2,'0');
+  let tail='';
+  const A='0123456789ABCDEFGHJKLMNPQRSTUVWXYZ';   // без I,O — щоб не плутати
+  const buf=new Uint8Array(4);
+  (crypto?.getRandomValues) ? crypto.getRandomValues(buf)
+                            : buf.forEach((_,i)=>buf[i]=Math.random()*256);
+  for(const b of buf) tail+=A[b%A.length];
+  return `SB-${ymd}-${tail}`;
+}
+
+/* історія замовлень у браузері гостя */
+const LS_ORD='sushiboom_orders_v1';
+
+function saveOrder(no,p){
+  try{
+    const list=getOrders();
+    /* зберігаємо не лише текст, а й самі позиції —
+       за назвою, не за індексом: меню зміниться, індекси з'їдуть */
+    const lines=Object.entries(cart).map(([i,q])=>({n:PRODUCTS[i].n, q}));
+    list.unshift({no, date:p.date, total:p.total, type:p.type, items:p.items, lines});
+    localStorage.setItem(LS_ORD, JSON.stringify(list.slice(0,20)));
+  }catch(e){}
+}
+function getOrders(){
+  try{ return JSON.parse(localStorage.getItem(LS_ORD)||'[]'); }catch(e){ return []; }
+}
+
+/* повторити замовлення: шукаємо позиції за назвою в АКТУАЛЬНОМУ меню.
+   Ціни беремо теперішні — стара сума може бути вже неактуальна. */
+function repeatOrder(no){
+  const o=getOrders().find(x=>x.no===no);
+  if(!o || !o.lines?.length) return toast('Не вдалося повторити');
+
+  let added=0, missing=0;
+  const next={};
+  for(const {n,q} of o.lines){
+    const i=PRODUCTS.findIndex(p=>p.n===n);
+    if(i===-1){ missing++; continue; }
+    next[i]=(next[i]||0)+q; added++;
+  }
+
+  if(!added) return toast('Цих позицій уже немає в меню');
+
+  cart=next;
+  step=1;
+  badgeUp();
+  buzz(12);
+  document.getElementById('cartTitle').textContent='Ваше замовлення';
+  document.getElementById('cartBody').scrollTop=0;
+  drawCart();
+
+  toast(missing
+    ? `Додано ${added} • ${missing} вже немає в меню`
+    : 'Замовлення повторено');
+}
+
+/* ---- телефон: маска +380 (00) 000 00 00 в одному полі ----
+   «+380 » зафіксовано: курсор не пускаємо лівіше,
+   Backspace на межі не спрацьовує, вставку нормалізуємо. */
+const TEL_PFX='+380 ';
+
+function phoneDigits(v){
+  let d=String(v).replace(/\D/g,'');
+  if(d.startsWith('380')) d=d.slice(3);   // вставили з кодом країни
+  else if(d.startsWith('80')) d=d.slice(2);
+  if(d.startsWith('0')) d=d.slice(1);     // «067…» -> «67…»
+  return d.slice(0,9);
+}
+/* d — ВЖЕ нормалізовані цифри (без коду країни) */
+function telMask(d){
+  if(!d) return TEL_PFX;
+  let s=TEL_PFX+'('+d.slice(0,2);
+  if(d.length>=2) s+=')';
+  if(d.length>2)  s+=' '+d.slice(2,5);
+  if(d.length>5)  s+=' '+d.slice(5,7);
+  if(d.length>7)  s+=' '+d.slice(7,9);
+  return s;
+}
+function fmtPhone(el){
+  const v=telMask(phoneDigits(el.value));
+  el.value=v;                       // під фокусом завжди видно «+380 »
+  F.phone = v===TEL_PFX ? '' : v;
+  telGuard(el);
+}
+function telFocus(el){
+  if(!el.value) el.value=TEL_PFX;
+  telCaret(el);
+}
+/* порожній префікс -> віддаємо плейсхолдер */
+function telBlur(el){
+  if(phoneDigits(el.value).length===0){ el.value=''; F.phone=''; }
+}
+/* курсор не лівіше префікса */
+function telGuard(el){
+  requestAnimationFrame(()=>{
+    if(el.selectionStart < TEL_PFX.length)
+      el.setSelectionRange(el.value.length, el.value.length);
+  });
+}
+/* Backspace: стираємо ЦИФРУ, а не символ маски.
+   Інакше «+380 (88)» -> Backspace з'їдає «)», маска малює його
+   назад, і цифра ніколи не зникає. */
+function telKey(e,el){
+  if(e.key!=='Backspace') return;
+  if(el.selectionStart!==el.selectionEnd) return;   // виділення — хай браузер сам
+
+  e.preventDefault();
+  const d=phoneDigits(el.value);
+  if(!d){ el.value=TEL_PFX; telCaret(el); return; }
+
+  const v=telMask(d.slice(0,-1));
+  el.value = v;
+  F.phone = v===TEL_PFX ? '' : v;
+  telCaret(el);
+}
+/* курсор у кінець */
+function telCaret(el){
+  const n=el.value.length;
+  requestAnimationFrame(()=>el.setSelectionRange(n,n));
+}
+/* повний номер для відправки */
+const fullPhone = () => {
+  const d=phoneDigits(F.phone);
+  return d.length===9 ? '+380'+d : '';
+};
+/* код оператора: 39,50,63,66,67,68,73,89,91–99 */
+const OK_CODE = /^(39|50|6[3678]|7[3]|89|9[1-9])/;
+const phoneValid = () => {
+  const d=phoneDigits(F.phone);
+  return d.length===9 && OK_CODE.test(d);
+};
+
+async function copyNo(no){
+  try{
+    await navigator.clipboard.writeText(no);
+    toast('Номер скопійовано');
+  }catch(e){ toast(no); }
+}
+
+function clearCart(){
+  cart={}; mode='delivery'; step=1;
+  FKEYS.forEach(k=>F[k]='');
+  F.town=''; F.when='asap'; F.pay='cash'; F.ppl=2;
+  try{ localStorage.removeItem(LS); }catch(e){}
+  badgeUp(); closeCart();
+}
+
+/* ---- відновлення кошика при завантаженні ---- */
+/* показати історію замовлень у тому ж bottom sheet */
+function showOrders(){
+  const list=getOrders();
+  document.getElementById('cart').classList.add('on');
+  document.body.classList.add('lock');
+  syncBar();
+  document.getElementById('cartTitle').textContent='Мої замовлення';
+
+  const body=document.getElementById('cartBody');
+  const foot=document.getElementById('cartFoot');
+
+  if(!list.length){
+    body.innerHTML=`<div class="empty"><svg class="ei"><use href="#i-roll"/></svg>
+      <p>Замовлень ще немає.</p></div>
+      <p class="ord-note">Історія зберігається лише на цьому пристрої.</p>`;
+    foot.innerHTML=`<button class="submit" onclick="closeCart()">Закрити</button>`;
+    return;
+  }
+
+  body.innerHTML = list.map(o=>`
+    <div class="ord">
+      <div class="ord-h">
+        <b>${esc(o.no)}</b>
+        <button class="ono-c sm" onclick="copyNo('${esc(o.no)}')">Копіювати</button>
+      </div>
+      <div class="ord-m"><span>${esc(o.date)}</span><span>${esc(o.type)}</span></div>
+      <pre class="ord-i">${esc(o.items)}</pre>
+      <div class="ord-t">Разом <b>${esc(o.total)}</b></div>
+      ${o.lines?.length ? `
+      <button class="ord-r" onclick="repeatOrder('${esc(o.no)}')">
+        <svg><use href="#i-arr"/></svg> Повторити замовлення
+      </button>` : ''}
+    </div>`).join('')
+    + `<p class="ord-note">Історія зберігається лише на цьому пристрої.
+        Ваші замовлення завжди можна уточнити за телефоном.</p>`;
+
+  foot.innerHTML=`<button class="submit" onclick="closeCart()">Закрити</button>`;
+}
+
+function initOrders(){
+  if(getOrders().length) document.getElementById('drOrders').classList.remove('hidden');
+}
+
+/* ═══════════════════ ЛОГІКА ДВОХ ТОЧОК ═══════════════════ */
+
+/* застосувати обрану точку до всього інтерфейсу */
+function applyPoint(id){
+  const p = POINTS[id]; if(!p) return;
+  PT = p;
+
+  /* активні дані */
+  TOWNS     = p.towns;
+  HOME_TOWN = p.home;
+  CATS      = p.cats;
+  PRODUCTS  = p.menu;
+
+  /* режим столиків: діє лише для точки з order:'tables' + ?table=N */
+  const params = new URLSearchParams(location.search);
+  const tableNo = params.get('table');
+  TABLES_ON = (p.order==='tables' && !!tableNo);
+  TABLE_NO  = TABLES_ON ? tableNo : '';
+
+  /* контакти в розмітці */
+  document.querySelectorAll('[data-phone]').forEach(el=>{
+    el.textContent = p.phoneHuman;
+    if(el.tagName==='A') el.href = 'tel:'+p.phone;
+  });
+  document.querySelectorAll('[data-tel-href]').forEach(el=>{ el.href='tel:'+p.phone; });
+  document.querySelectorAll('[data-ig]').forEach(el=>{
+    el.textContent = '@'+p.ig;
+    if(el.tagName==='A') el.href='https://instagram.com/'+p.ig;
+  });
+  document.querySelectorAll('[data-ig-href]').forEach(el=>{ el.href='https://instagram.com/'+p.ig; });
+  document.querySelectorAll('[data-hours]').forEach(el=>{ el.textContent = p.hours; });
+  document.querySelectorAll('[data-city]').forEach(el=>{ el.textContent = p.name; });
+
+  /* перемалювати меню, чипси, категорії */
+  filter='all'; query='';
+  buildChips();
+  initDrawerCats();
+  render();
+  emptyMenuNotice();
+
+  /* оновити напис активної точки в шапці, якщо є */
+  const badge=document.getElementById('ptName');
+  if(badge) badge.textContent = p.name;
+}
+
+/* коли меню точки порожнє — показати «скоро» замість «не знайдено» */
+function emptyMenuNotice(){
+  const empty = PRODUCTS.length===0;
+  const t=document.getElementById('nrTitle');
+  const x=document.getElementById('nrText');
+  const b=document.getElementById('nrBtn');
+  if(empty){
+    document.getElementById('noRes').classList.add('on');
+    if(t) t.textContent='Меню скоро';
+    if(x) x.textContent='Цей заклад ще готує своє меню. Загляньте трохи згодом.';
+    if(b) b.hidden=true;
+  }else{
+    if(t) t.textContent='Нічого не знайдено';
+    if(x) x.textContent='Спробуйте іншу назву або інгредієнт';
+    if(b) b.hidden=false;
+  }
+}
+
+/* таби категорій: тап -> плавний скрол до секції */
+function buildChips(){
+  rail.innerHTML = CATS.map(c=>`<button class="chip" data-c="${c.id}">${c.name}</button>`).join('');
+  rail.querySelectorAll('.chip').forEach(ch=>{
+    ch.onclick=()=>{
+      if(query){ qEl.value=''; query=''; qBox.classList.remove('has'); render(); }
+      const sec=document.getElementById('mcat-'+ch.dataset.c);
+      if(!sec) return;
+      spyLock=true; setActiveChip(ch.dataset.c);
+      sec.scrollIntoView({behavior:'smooth',block:'start'});
+      clearTimeout(spyT); spyT=setTimeout(()=>{ spyLock=false; },800);
+    };
+  });
+  const f=rail.querySelector('.chip'); if(f) f.classList.add('on');
+}
+
+/* скролспай: гортаєш меню — активна категорія підсвічується
+   і стрічка табів сама підлистується до неї */
+let spyLock=false, spyCur='', spyT;
+function setActiveChip(id){
+  spyCur=id;
+  let on=null;
+  rail.querySelectorAll('.chip').forEach(x=>{
+    const a = x.dataset.c===id;
+    x.classList.toggle('on',a);
+    if(a) on=x;
+  });
+  if(on) rail.scrollTo({left:on.offsetLeft - rail.clientWidth/2 + on.offsetWidth/2, behavior:'smooth'});
+}
+function spyTick(){
+  if(spyLock || query) return;
+  const secs=document.querySelectorAll('.mcat[data-cat]');
+  if(!secs.length) return;
+  let cur=secs[0].dataset.cat;
+  for(const sc of secs){
+    if(sc.getBoundingClientRect().top<=100) cur=sc.dataset.cat; else break;
+  }
+  if(cur!==spyCur) setActiveChip(cur);
+}
+let spyReq=false;
+addEventListener('scroll',()=>{
+  if(spyReq) return; spyReq=true;
+  requestAnimationFrame(()=>{ spyReq=false; spyTick(); });
+},{passive:true});
+
+/* вибір точки з екрана */
+function choosePoint(id){
+  try{ localStorage.setItem(LS_POINT, id); }catch(e){}
+  applyPoint(id);
+  const pick=document.getElementById('pick');
+  pick.hidden=true;
+  document.body.style.overflow='';
+}
+
+/* перемкнути точку (з меню/шапки) */
+function switchPoint(){
+  clearCart();
+  try{ localStorage.removeItem(LS_POINT); }catch(e){}
+  const pick=document.getElementById('pick');
+  pick.hidden=false;
+  document.body.style.overflow='hidden';
+  window.scrollTo(0,0);
+}
+
+/* старт: або показати вибір, або застосувати збережену точку */
+function initPick(){
+  const pick=document.getElementById('pick');
+  pick.querySelectorAll('.pick-card').forEach(btn=>{
+    btn.onclick=()=>choosePoint(btn.dataset.pt);
+  });
+
+  /* 1) точка з QR-посилання (?p=tsar / ?p=petr) — має пріоритет,
+        щоб гість зі сканованого QR не бачив екрана вибору */
+  const params=new URLSearchParams(location.search);
+  const fromUrl=params.get('p');
+  if(fromUrl && POINTS[fromUrl]){
+    try{ localStorage.setItem(LS_POINT, fromUrl); }catch(e){}
+    applyPoint(fromUrl);
+    pick.hidden=true;
+    return;
+  }
+
+  /* 2) раніше збережений вибір */
+  const saved = localStorage.getItem(LS_POINT);
+  if(saved && POINTS[saved]){
+    applyPoint(saved);
+    pick.hidden=true;
+    return;
+  }
+
+  /* 3) «голий» захід без параметра — показати вибір */
+  pick.hidden=false;
+  document.body.style.overflow='hidden';
+}
+
+/* прапорці режиму столиків (використовуються в оформленні замовлення) */
+let TABLES_ON=false, TABLE_NO='';
+
+loadCart();
+badgeUp();
+initReveal();
+initOrders();
+initPick();
+</script>
+</body>
+</html>
