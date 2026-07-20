@@ -2497,5 +2497,63 @@ initReveal();
 initOrders();
 initPick();
 </script>
+
+<!-- ===== Live-меню з платформи arawebsite (Supabase) =====
+     При відкритті сторінка одним запитом тягне з бази меню ОБОХ точок
+     (Царичанка + Петриківка) — тому зміни в адмінці з'являються на сайті самі.
+     Якщо база недоступна або якоїсь точки в ній ще нема —
+     сайт спокійно працює на вбудованому меню вище по коду. -->
+<script>
+(function(){
+  var DB_URL  = 'https://ortiatyxntdikaldepbp.supabase.co/rest/v1';
+  var DB_KEY  = 'sb_publishable_UW1Z8ukEU1XWVCdQxIGkDw_firK4hpO'; /* публічний ключ читання */
+  var SITE_ID = 1; /* SUSHI BOOM у базі платформи */
+
+  fetch(DB_URL + '/items?site_id=eq.' + SITE_ID +
+        '&collection=in.(cats,menu,cats_petr,menu_petr)' +
+        '&order=sort_order&select=id,collection,title,text,price,image_url,extra',
+        { headers: { apikey: DB_KEY } })
+    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+    .then(function(rows){
+      /* розкладаємо рядки по колекціях */
+      var by = {};
+      rows.forEach(function(r){ (by[r.collection] = by[r.collection] || []).push(r); });
+
+      function toCats(list){
+        return list.map(function(c){
+          return { id: (c.extra && c.extra.catkey) || ('cat-' + c.title), name: c.title };
+        });
+      }
+
+      function toMenu(list){
+        return list.map(function(p){
+          var x = p.extra || {};
+          var imgKey = x.img;
+          if(p.image_url){ imgKey = 'db' + p.id; IMG[imgKey] = p.image_url; } /* фото з адмінки */
+          var item = { c: x.cat, img: imgKey, n: p.title, d: p.text, p: Number(p.price) || p.price };
+          if(x.top) item.top = 1;
+          if(x.unit) item.u = x.unit;
+          return item;
+        });
+      }
+
+      /* підмінити меню точки даними з бази (якщо вони там є) і перемалювати, якщо точка активна */
+      function applyDb(point, cats, menu){
+        if(!cats || !menu || !cats.length || !menu.length) return;
+        point.cats = toCats(cats);
+        point.menu = toMenu(menu);
+        if(PT === point || (!PT && point === POINTS.tsar)){
+          CATS = point.cats;
+          PRODUCTS = point.menu;
+          try{ buildChips(); initDrawerCats(); render(); emptyMenuNotice(); }catch(e){}
+        }
+      }
+
+      applyDb(POINTS.tsar, by.cats,      by.menu);
+      applyDb(POINTS.petr, by.cats_petr, by.menu_petr);
+    })
+    .catch(function(){ /* офлайн чи збій — вбудоване меню вже на екрані */ });
+})();
+</script>
 </body>
 </html>
